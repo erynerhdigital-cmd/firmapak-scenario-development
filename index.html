@@ -54,7 +54,7 @@
       gap:20px;
     }
 
-    /* TOP BAR: LOGOS ONLY */
+    /* TOP BAR: LOGOS */
     .top-bar {
       display:flex;
       align-items:center;
@@ -82,11 +82,20 @@
     .hero {
       border-radius:24px;
       padding:28px 24px 26px;
-      background:radial-gradient(circle at top left,rgba(59,130,246,.28),transparent 55%),
-                  radial-gradient(circle at bottom right,rgba(56,189,248,.18),transparent 60%),
-                  linear-gradient(145deg,#020617,#020617 35%,#020617);
+      background:
+        radial-gradient(circle at top left,rgba(59,130,246,.28),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(56,189,248,.18),transparent 60%),
+        linear-gradient(145deg,#020617,#020617 35%,#020617);
       border:1px solid rgba(148,163,184,.35);
       box-shadow:var(--shadow-soft);
+    }
+
+    .hero-tagline {
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:11px;
+      color:rgba(148,163,184,.9);
+      margin-bottom:12px;
     }
 
     .hero-title {
@@ -106,14 +115,6 @@
       color:var(--vi-muted);
       max-width:640px;
       margin-bottom:24px;
-    }
-
-    .hero-tagline {
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:11px;
-      color:rgba(148,163,184,.9);
-      margin-bottom:12px;
     }
 
     .hero-grid {
@@ -136,17 +137,6 @@
       border:1px solid rgba(51,65,85,.9);
     }
 
-    .hero-card-title {
-      font-size:13px;
-      font-weight:600;
-      margin-bottom:4px;
-    }
-
-    .hero-card-sub {
-      font-size:12px;
-      color:var(--vi-muted);
-    }
-
     .hero-icon {
       width:24px;
       height:24px;
@@ -159,18 +149,19 @@
       font-size:14px;
     }
 
-    .hero-bottom {
-      display:grid;
-      grid-template-columns: minmax(0,2fr) minmax(0,1.4fr);
-      gap:16px;
-      align-items:flex-start;
-      margin-top:4px;
+    .hero-card-title {
+      font-size:13px;
+      font-weight:600;
+      margin-bottom:4px;
     }
 
-    @media (max-width:900px){
-      .hero-bottom {
-        grid-template-columns:1fr;
-      }
+    .hero-card-sub {
+      font-size:12px;
+      color:var(--vi-muted);
+    }
+
+    .hero-bottom {
+      margin-top:6px;
     }
 
     .expect-card {
@@ -224,12 +215,95 @@
       margin-top:1px;
     }
 
+    /* MERGED SCENARIO DESIGN INTAKE INSIDE HERO */
+    .intake-merged {
+      margin-top:22px;
+      padding:18px 20px;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.32);
+      background:rgba(15,23,42,.35);
+      backdrop-filter:blur(4px);
+    }
+
+    .intake-title {
+      font-family:"Montserrat",system-ui;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      margin-bottom:8px;
+    }
+
+    .intake-text {
+      font-size:13px;
+      color:var(--vi-muted);
+      margin-bottom:12px;
+      max-width:700px;
+    }
+
+    .intake-chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:14px;
+    }
+
+    .chip {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      background:rgba(15,23,42,.9);
+      color:#e5ecf5;
+    }
+
+    .intake-meta {
+      margin-top:14px;
+      padding:14px;
+      border-radius:14px;
+      background:rgba(15,23,42,.85);
+      border:1px solid rgba(148,163,184,.35);
+    }
+
+    .intake-meta-row {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:6px;
+      gap:10px;
+    }
+
+    .meta-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:rgba(148,163,184,.85);
+    }
+
+    .meta-value {
+      font-size:12px;
+      color:#e5ecf5;
+    }
+
+    .meta-checklist {
+      margin-top:6px;
+      padding-left:16px;
+      font-size:12px;
+      color:var(--vi-muted);
+    }
+
     .hero-cta-row {
       margin-top:16px;
       display:flex;
       align-items:center;
       justify-content:flex-start;
       gap:10px;
+    }
+
+    .hero-cta-hint {
+      font-size:11px;
+      color:var(--vi-muted);
     }
 
     .btn {
@@ -258,265 +332,149 @@
       box-shadow:0 14px 30px rgba(8,47,73,.8);
     }
 
-    .hero-cta-hint {
-      font-size:11px;
-      color:var(--vi-muted);
+    .btn:disabled {
+      opacity:.45;
+      cursor:default;
+      transform:none;
+      box-shadow:none;
     }
 
-    /* CONSULTATION SECTION */
-    .consultation-section {
-      margin-top:18px;
+    /* FORM SECTION (HUBSPOT) */
+    .form-section {
+      margin-top:10px;
+      width:100%;
     }
 
-    .content-row {
-      display:grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(0,2fr);
-      gap:24px;
-      align-items:flex-start;
-    }
-
-    @media (max-width:900px){
-      .content-row {
-        grid-template-columns:minmax(0,1fr);
-      }
-    }
-
-    .intro-panel {
-      border-radius:var(--card-radius);
-      padding:18px 18px 20px;
-      background:radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 55%),
-                  radial-gradient(circle at bottom right,rgba(16,185,129,.2),transparent 60%),
-                  linear-gradient(145deg,rgba(15,23,42,.96),rgba(15,23,42,.98));
-      border:1px solid rgba(148,163,184,.32);
+    .hubspot-intake-card {
+      border-radius:24px;
+      padding:22px 22px 26px;
+      background:linear-gradient(145deg,#020617,#020617 35%,#020617);
+      border:1px solid rgba(148,163,184,.35);
       box-shadow:var(--shadow-soft);
     }
 
-    .intro-panel h2 {
+    .form-header-title {
       font-family:"Montserrat",system-ui;
       font-size:18px;
-      letter-spacing:.03em;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-
-    .intro-subtitle {
-      font-size:13px;
-      color:var(--vi-muted);
-      margin-bottom:12px;
-    }
-
-    .scenario-chips {
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:14px;
-    }
-
-    .chip {
-      font-size:11px;
       text-transform:uppercase;
       letter-spacing:.12em;
-      padding:6px 9px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.5);
-      background:rgba(15,23,42,.9);
       color:#e5ecf5;
+      margin-bottom:4px;
     }
 
-    .intro-note {
-      font-size:12px;
-      line-height:1.5;
+    .form-header-subtitle {
+      font-size:13px;
       color:var(--vi-muted);
       margin-bottom:16px;
     }
 
-    .meta-box {
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(148,163,184,.35);
-      font-size:11px;
-      color:var(--vi-muted);
-    }
-
-    .meta-row {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      margin-bottom:6px;
-    }
-
-    .meta-label {
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:10px;
-      color:rgba(148,163,184,.9);
-    }
-
-    .meta-value {
-      font-size:11px;
-      color:#e5ecf5;
-    }
-
-    .meta-checklist {
-      margin-top:4px;
-      padding-left:16px;
-    }
-
-    .meta-checklist li {
-      margin-bottom:4px;
-    }
-
-    /* FORM CARD (RIGHT SIDE) */
-    .wizard-shell {
-      position:relative;
-      min-height:360px;
-    }
-
-    .card {
-      position:relative;
-      border-radius:var(--card-radius);
-      background:radial-gradient(circle at top left,rgba(56,189,248,.16),transparent 54%),
-                  radial-gradient(circle at bottom right,rgba(45,212,191,.14),transparent 58%),
-                  linear-gradient(160deg,#020617,#020617 5%,#020617 40%,#020617 100%);
-      border:1px solid rgba(51,65,85,.95);
-      box-shadow:var(--shadow-soft);
-      padding:18px 18px 16px;
-      overflow:hidden;
-    }
-
-    .card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at top,rgba(59,130,246,.22),transparent 60%);
-      opacity:.5;
-      pointer-events:none;
-      mix-blend-mode:soft-light;
-    }
-
-    .card-inner {
-      position:relative;
-      z-index:1;
-    }
-
-    .step-label {
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      color:var(--vi-muted);
-      margin-bottom:6px;
-    }
-
-    .step-title {
-      font-family:"Montserrat",system-ui;
-      font-size:18px;
-      margin-bottom:4px;
-    }
-
-    .step-subtitle {
-      font-size:13px;
-      color:var(--vi-muted);
-      margin-bottom:12px;
-    }
-
-    /* HUBSPOT FORM WRAPPER – white card so text is readable */
-    .hs-wrapper {
-      max-width:680px;
-      width:100%;
-      margin:8px auto 4px;
-    }
-
-    .hs-form-frame {
+    .form-inner-shell {
+      border-radius:20px;
       background:#ffffff;
-      border-radius:18px;
-      padding:20px 18px;
-      box-shadow:0 18px 40px rgba(0,0,0,.6);
+      padding:18px 18px 20px;
     }
 
-    .hs-form-frame iframe {
-      width:100% !important;
-      border:0 !important;
-      border-radius:14px;
-      display:block;
+    /* HubSpot overrides */
+    .hubspot-intake-card .hs-form {
+      max-width:100%;
     }
 
-    /* HubSpot inline (in case this embed is not iframe-based) */
-    .hs-form * {
-      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    }
-
-    .hs-form fieldset {
-      border:none !important;
-      padding:0 !important;
-      margin:0 !important;
-    }
-
-    .hs-form .hs-form-field {
+    .hubspot-intake-card .hs-form-field {
       margin-bottom:14px;
     }
 
-    .hs-form label {
-      font-size:12px;
-      font-weight:500;
-      color:#020617;
-      margin-bottom:4px;
+    .hubspot-intake-card .hs-form-field label {
       display:block;
-    }
-
-    .hs-input,
-    .hs-form textarea {
-      width:100%;
-      border-radius:999px;
-      border:1px solid #cbd5e1;
-      padding:10px 14px;
       font-size:13px;
-      background:#f9fafb;
-      color:#020617;
-      outline:none;
-      transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+      font-weight:600;
+      color:#0f172a;
+      margin-bottom:4px;
     }
 
-    .hs-form textarea {
-      border-radius:16px;
-      min-height:90px;
+    .hubspot-intake-card .hs-field-desc {
+      font-size:11px;
+      color:#6b7280;
+      margin-bottom:4px;
     }
 
-    .hs-input:focus,
-    .hs-form textarea:focus {
-      border-color:#0ea5e9;
-      box-shadow:0 0 0 1px rgba(14,165,233,.4);
-      background:#ffffff;
+    .hubspot-intake-card .hs-input,
+    .hubspot-intake-card textarea.hs-input {
+      width:100% !important;
+      border-radius:12px !important;
+      border:1px solid #d1d5db !important;
+      padding:10px 11px !important;
+      font-size:13px !important;
+      background:#f9fafb !important;
+      color:#111827 !important;
+      min-height:44px;
+      box-shadow:none !important;
     }
 
-    .hs-button {
+    .hubspot-intake-card textarea.hs-input {
+      min-height:80px;
+    }
+
+    .hubspot-intake-card .hs-input:focus,
+    .hubspot-intake-card textarea.hs-input:focus {
+      outline:none !important;
+      border-color:#22c1c3 !important;
+      box-shadow:0 0 0 1px rgba(34,193,195,.55) !important;
+      background:#ffffff !important;
+    }
+
+    .hubspot-intake-card .hs-error-msgs {
+      list-style:none;
+      padding-left:0;
+      margin:4px 0 0;
+      font-size:11px;
+      color:#b91c1c;
+    }
+
+    .hubspot-intake-card .actions {
+      margin-top:10px;
+    }
+
+    .hubspot-intake-card .hs-button {
       border-radius:999px !important;
       background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue)) !important;
-      border:none !important;
-      color:#0b1220 !important;
+      color:#020617 !important;
       font-weight:600 !important;
-      padding:10px 22px !important;
       font-size:13px !important;
-      cursor:pointer !important;
-      box-shadow:0 10px 25px rgba(15,118,110,.6) !important;
-      text-transform:none !important;
+      padding:9px 18px !important;
+      border:none !important;
+      box-shadow:0 10px 25px rgba(15,118,110,.4) !important;
+      cursor:pointer;
     }
 
-    .hs-button:hover {
+    .hubspot-intake-card .hs-button:hover {
       transform:translateY(-1px);
-      box-shadow:0 14px 30px rgba(8,47,73,.8) !important;
+      box-shadow:0 14px 30px rgba(8,47,73,.7) !important;
     }
 
-    .hidden {
-      display:none;
+    /* Make HubSpot thank-you text readable */
+    .hubspot-intake-card .submitted-message {
+      font-size:14px;
+      color:#0f172a;
+    }
+
+    @media (max-width:768px){
+      .hubspot-intake-card {
+        padding:18px 14px 20px;
+      }
+
+      .form-inner-shell {
+        padding:14px 12px 18px;
+      }
     }
   </style>
+
+  <!-- HubSpot embed loader -->
+  <script src="https://js.hsforms.net/forms/embed/23746819.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
     <div class="layout">
+
       <!-- TOP LOGO BAR -->
       <div class="top-bar">
         <div class="logo-row">
@@ -525,14 +483,17 @@
         <img class="vi-logo" src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Virtual%20Instinct-03.webp" alt="Virtual Instinct Logo">
       </div>
 
-      <!-- HERO LANDING PAGE -->
+      <!-- HERO WITH SCENARIO DESIGN INTAKE MERGED -->
       <section class="hero">
         <div class="hero-tagline">Consultation to Develop</div>
+
         <h1 class="hero-title">
           Virtual Practice <span class="highlight">Scenarios</span>
         </h1>
+
         <p class="hero-subtitle">
-          Complete this consultation form to help us build customized sales training scenarios tailored to FirmaPak’s unique challenges and opportunities.
+          Complete this consultation form to help us build customized sales training scenarios
+          tailored to FirmaPak’s unique challenges and opportunities.
         </p>
 
         <div class="hero-grid">
@@ -543,6 +504,7 @@
               Master early-stage conversations and uncover customer needs effectively.
             </div>
           </div>
+
           <div class="hero-card">
             <div class="hero-icon">📑</div>
             <div class="hero-card-title">Proposal Review to Close</div>
@@ -550,6 +512,7 @@
               Navigate negotiations and close deals with confidence.
             </div>
           </div>
+
           <div class="hero-card">
             <div class="hero-icon">⚡</div>
             <div class="hero-card-title">The Medley (Full-Flow)</div>
@@ -583,87 +546,90 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="hero-cta-row">
-          <button id="start-btn" class="btn btn-primary">Start Consultation</button>
-          <span class="hero-cta-hint">The intake will appear below once you start.</span>
-        </div>
-      </section>
+          <!-- Scenario Design Intake merged into hero -->
+          <div class="intake-merged">
+            <h2 class="intake-title">Scenario Design Intake</h2>
 
-      <!-- CONSULTATION SECTION (HIDDEN UNTIL START) -->
-      <section id="consultation-section" class="consultation-section hidden">
-        <div class="content-row">
-          <!-- LEFT: INTRO CARD -->
-          <aside class="intro-panel">
-            <h2>Scenario Design Intake</h2>
-            <p class="intro-subtitle">
+            <p class="intake-text">
               Use this intake to capture how your customers think, how deals are won or lost,
               and the exact moments your sales team needs to rehearse inside Virtual Instinct.
             </p>
 
-            <div class="scenario-chips">
+            <div class="intake-chips">
               <span class="chip">Qualifying &amp; Needs Analysis</span>
               <span class="chip">Proposal Review to Close</span>
               <span class="chip">Full-Flow Medley</span>
             </div>
 
-            <p class="intro-note">
-              Your responses will be translated into live practice scenarios and Key Moments in
-              Virtual Instinct. We combine your lost deals, competitive dynamics, and internal
+            <p class="intake-text">
+              Your responses will be translated into live practice scenarios and Key Moments
+              in Virtual Instinct. We combine your lost deals, competitive dynamics, and internal
               sales patterns to build realistic, high-impact simulations.
             </p>
 
-            <div class="meta-box">
-              <div class="meta-row">
+            <div class="intake-meta">
+              <div class="intake-meta-row">
                 <span class="meta-label">Delivered To</span>
                 <span class="meta-value">Virtual Instinct Scenario Design Team</span>
               </div>
-              <div class="meta-row">
+
+              <div class="intake-meta-row">
                 <span class="meta-label">What Happens Next</span>
-                <span class="meta-value">We review your intake, write scripts, design role-play flows &amp; schedule sessions.</span>
+                <span class="meta-value">
+                  We review your intake, write scripts, design role-play flows &amp; schedule sessions.
+                </span>
               </div>
+
               <ul class="meta-checklist">
                 <li>✔ Your answers are securely submitted to HubSpot.</li>
                 <li>✔ The Virtual Instinct team is notified automatically.</li>
               </ul>
             </div>
-          </aside>
+          </div>
+        </div>
 
-          <!-- RIGHT: HUBSPOT FORM CARD -->
-          <main class="wizard-shell">
-            <section class="card" aria-live="polite">
-              <div class="card-inner">
-                <div class="step-label">Start Your Consultation</div>
-                <h3 class="step-title">Customer Personas &amp; Buying Dynamics</h3>
-                <p class="step-subtitle">Complete the form below to begin.</p>
-
-                <div class="hs-wrapper">
-                  <script src="https://js.hsforms.net/forms/embed/23746819.js" defer></script>
-                  <div class="hs-form-frame"
-                       data-region="na1"
-                       data-form-id="2b432e6d-400d-433b-899e-d0cc1654bb44"
-                       data-portal-id="23746819">
-                  </div>
-                </div>
-              </div>
-            </section>
-          </main>
+        <div class="hero-cta-row">
+          <button id="start-btn" class="btn btn-primary">Start Consultation</button>
+          <span class="hero-cta-hint">Scrolls to the intake form below.</span>
         </div>
       </section>
+
+      <!-- HUBSPOT FORM SECTION -->
+      <section id="form-section" class="form-section">
+        <div class="hubspot-intake-card">
+          <div class="form-header">
+            <div class="form-header-title">Start Your Consultation</div>
+            <p class="form-header-subtitle">
+              Complete the form below to begin. We’ll use your responses to design custom,
+              high-fidelity practice scenarios for the FirmaPak team.
+            </p>
+          </div>
+
+          <div class="form-inner-shell">
+            <!-- HubSpot embed -->
+            <div class="hs-form-frame"
+                 data-region="na1"
+                 data-form-id="2b432e6d-400d-433b-899e-d0cc1654bb44"
+                 data-portal-id="23746819"></div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
   <script>
+    // Smooth scroll from hero button to form card
     const startBtn = document.getElementById("start-btn");
-    const consultationSection = document.getElementById("consultation-section");
+    const formSection = document.getElementById("form-section");
 
-    startBtn.addEventListener("click", () => {
-      consultationSection.classList.remove("hidden");
-      startBtn.disabled = true;
-      startBtn.textContent = "Consultation Started";
-      consultationSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    if (startBtn && formSection) {
+      startBtn.addEventListener("click", () => {
+        formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   </script>
 </body>
 </html>
+
