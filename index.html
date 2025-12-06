@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --vi-navy:#050b18;
       --vi-navy-soft:#0c1b2a;
       --vi-slate:#101820;
@@ -22,18 +22,23 @@
       --shadow-soft:0 18px 40px rgba(0,0,0,.55);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;}
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-    body{
+    body {
       font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       background:radial-gradient(circle at top,#192a3d 0,#050b18 45%,#020617 100%);
       color:var(--vi-text);
       min-height:100vh;
       display:flex;
+      align-items:stretch;
       justify-content:center;
     }
 
-    .page-shell{
+    .page-shell {
       width:100%;
       min-height:100vh;
       padding:24px 16px 40px;
@@ -41,7 +46,7 @@
       justify-content:center;
     }
 
-    .layout{
+    .layout {
       width:100%;
       max-width:1120px;
       display:flex;
@@ -49,51 +54,42 @@
       gap:20px;
     }
 
-    /* TOP BAR */
-    .top-bar{
+    /* TOP BAR: LOGOS ONLY */
+    .top-bar {
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
     }
 
-    .logo-row{
+    .logo-row {
       display:flex;
       align-items:center;
       gap:12px;
     }
 
-    .firmapak-logo{
+    .firmapak-logo {
       height:32px;
       width:auto;
     }
 
-    .vi-logo{
+    .vi-logo {
       height:26px;
       width:auto;
     }
 
-    /* HERO */
-    .hero{
+    /* HERO SECTION */
+    .hero {
       border-radius:24px;
-      padding:24px 24px 22px;
-      background:
-        radial-gradient(circle at top left,rgba(59,130,246,.28),transparent 55%),
-        radial-gradient(circle at bottom right,rgba(56,189,248,.18),transparent 60%),
-        linear-gradient(145deg,#020617,#020617 35%,#020617);
+      padding:28px 24px 26px;
+      background:radial-gradient(circle at top left,rgba(59,130,246,.28),transparent 55%),
+                  radial-gradient(circle at bottom right,rgba(56,189,248,.18),transparent 60%),
+                  linear-gradient(145deg,#020617,#020617 35%,#020617);
       border:1px solid rgba(148,163,184,.35);
       box-shadow:var(--shadow-soft);
     }
 
-    .hero-tagline{
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:11px;
-      color:rgba(148,163,184,.9);
-      margin-bottom:8px;
-    }
-
-    .hero-title{
+    .hero-title {
       font-family:"Montserrat",system-ui;
       font-size:32px;
       line-height:1.2;
@@ -101,45 +97,57 @@
       letter-spacing:.02em;
     }
 
-    .hero-title .highlight{color:#4f8cff;}
+    .hero-title span.highlight {
+      color:#4f8cff;
+    }
 
-    .hero-subtitle{
+    .hero-subtitle {
       font-size:14px;
       color:var(--vi-muted);
       max-width:640px;
-      margin-bottom:22px;
+      margin-bottom:24px;
     }
 
-    .hero-grid{
+    .hero-tagline {
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:11px;
+      color:rgba(148,163,184,.9);
+      margin-bottom:12px;
+    }
+
+    .hero-grid {
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:14px;
       margin-bottom:20px;
     }
 
-    @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr;}
+    @media (max-width:900px){
+      .hero-grid {
+        grid-template-columns:1fr;
+      }
     }
 
-    .hero-card{
+    .hero-card {
       border-radius:18px;
       padding:14px 14px 16px;
       background:rgba(15,23,42,.96);
       border:1px solid rgba(51,65,85,.9);
     }
 
-    .hero-card-title{
+    .hero-card-title {
       font-size:13px;
       font-weight:600;
       margin-bottom:4px;
     }
 
-    .hero-card-sub{
+    .hero-card-sub {
       font-size:12px;
       color:var(--vi-muted);
     }
 
-    .hero-icon{
+    .hero-icon {
       width:24px;
       height:24px;
       border-radius:999px;
@@ -151,101 +159,11 @@
       font-size:14px;
     }
 
-    .hero-bottom-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.3fr) minmax(0,1.7fr);
-      gap:16px;
-      margin-top:8px;
-      align-items:flex-start;
-    }
-
-    @media(max-width:900px){
-      .hero-bottom-grid{grid-template-columns:1fr;}
-    }
-
-    .intake-card{
-      border-radius:18px;
-      padding:16px 16px 14px;
-      background:radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 55%),
-                  radial-gradient(circle at bottom right,rgba(16,185,129,.2),transparent 60%),
-                  linear-gradient(145deg,rgba(15,23,42,.96),rgba(15,23,42,.98));
-      border:1px solid rgba(148,163,184,.32);
-      font-size:12px;
-    }
-
-    .intake-title{
-      font-family:"Montserrat",system-ui;
-      font-size:15px;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      margin-bottom:8px;
-    }
-
-    .intake-sub{
-      font-size:12px;
-      color:var(--vi-muted);
-      margin-bottom:10px;
-    }
-
-    .scenario-chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-bottom:10px;
-    }
-
-    .chip{
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      padding:5px 8px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.55);
-      background:rgba(15,23,42,.9);
-    }
-
-    .intake-note{
-      font-size:12px;
-      color:var(--vi-muted);
-      margin-bottom:10px;
-    }
-
-    .meta-box{
-      margin-top:8px;
-      padding:9px 11px;
-      border-radius:14px;
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(148,163,184,.35);
-      font-size:11px;
-      color:var(--vi-muted);
-    }
-
-    .meta-row{
-      display:flex;
-      justify-content:space-between;
-      gap:8px;
-      margin-bottom:4px;
-    }
-
-    .meta-label{
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:9px;
-      color:rgba(148,163,184,.9);
-    }
-
-    .meta-value{
-      font-size:11px;
-      color:#e5ecf5;
-    }
-
-    .meta-checklist{
+    .hero-bottom {
       margin-top:4px;
-      padding-left:16px;
     }
-    .meta-checklist li{margin-bottom:3px;}
 
-    .expect-card{
+    .expect-card {
       border-radius:18px;
       padding:14px 16px 12px;
       background:rgba(15,23,42,.96);
@@ -253,19 +171,25 @@
       font-size:12px;
     }
 
-    .expect-title{font-size:12px;font-weight:600;margin-bottom:8px;}
+    .expect-title {
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:8px;
+    }
 
-    .expect-columns{
+    .expect-columns {
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+      grid-template-columns: repeat(2,minmax(0,1fr));
       gap:10px;
     }
 
-    @media(max-width:600px){
-      .expect-columns{grid-template-columns:1fr;}
+    @media (max-width:600px){
+      .expect-columns {
+        grid-template-columns:1fr;
+      }
     }
 
-    .expect-section-title{
+    .expect-section-title {
       font-size:11px;
       text-transform:uppercase;
       letter-spacing:.16em;
@@ -273,25 +197,32 @@
       margin-bottom:6px;
     }
 
-    .expect-list{list-style:none;}
-
-    .expect-list li{
-      display:flex;
-      gap:6px;
-      margin-bottom:4px;
-      font-size:12px;
+    .expect-list {
+      list-style:none;
+      padding-left:0;
     }
 
-    .expect-list .bullet{font-size:12px;margin-top:1px;}
+    .expect-list li {
+      display:flex;
+      align-items:flex-start;
+      gap:6px;
+      margin-bottom:4px;
+    }
 
-    .hero-cta-row{
+    .expect-list li span.bullet {
+      font-size:12px;
+      margin-top:1px;
+    }
+
+    .hero-cta-row {
       margin-top:16px;
       display:flex;
       align-items:center;
+      justify-content:flex-start;
       gap:10px;
     }
 
-    .btn{
+    .btn {
       border-radius:999px;
       border:none;
       cursor:pointer;
@@ -306,47 +237,160 @@
       font-family:inherit;
     }
 
-    .btn-primary{
+    .btn-primary {
       background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue));
       color:#0b1220;
       box-shadow:0 10px 25px rgba(15,118,110,.6);
     }
 
-    .btn-primary:hover{
+    .btn-primary:hover {
       transform:translateY(-1px);
       box-shadow:0 14px 30px rgba(8,47,73,.8);
     }
 
-    .hero-cta-hint{
+    .btn-secondary {
+      background:rgba(15,23,42,.95);
+      color:var(--vi-text);
+      border:1px solid rgba(148,163,184,.75);
+    }
+
+    .btn-secondary:hover {
+      background:rgba(15,23,42,1);
+    }
+
+    .btn:disabled {
+      opacity:.45;
+      cursor:default;
+      transform:none;
+      box-shadow:none;
+    }
+
+    .hero-cta-hint {
       font-size:11px;
       color:var(--vi-muted);
     }
 
-    .hero-cta-note{
+    /* SCENARIO DESIGN CARD + WIZARD */
+    .intake-shell {
+      margin-top:8px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .scenario-intake-card {
+      border-radius:24px;
+      padding:18px 18px 16px;
+      background:radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 55%),
+                  radial-gradient(circle at bottom right,rgba(16,185,129,.2),transparent 60%),
+                  linear-gradient(145deg,rgba(15,23,42,.96),rgba(15,23,42,.98));
+      border:1px solid rgba(148,163,184,.32);
+      box-shadow:var(--shadow-soft);
+      font-size:12px;
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(0,1.2fr);
+      gap:16px;
+    }
+
+    @media (max-width:900px){
+      .scenario-intake-card {
+        grid-template-columns:1fr;
+      }
+    }
+
+    .scenario-intake-card h2 {
+      font-family:"Montserrat",system-ui;
+      font-size:18px;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .scenario-tagline {
+      font-size:12px;
+      color:var(--vi-muted);
+      margin-bottom:10px;
+    }
+
+    .scenario-chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:10px;
+    }
+
+    .chip {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      background:rgba(15,23,42,.9);
+      color:#e5ecf5;
+    }
+
+    .scenario-note {
+      font-size:12px;
+      color:var(--vi-muted);
+    }
+
+    .scenario-meta {
       font-size:11px;
       color:var(--vi-muted);
+      border-radius:16px;
+      padding:10px 12px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.35);
+    }
+
+    .scenario-meta-row {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:4px;
+    }
+
+    .meta-label {
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+      color:rgba(148,163,184,.9);
+    }
+
+    .meta-value {
+      font-size:11px;
+      color:#e5ecf5;
+    }
+
+    .meta-list {
       margin-top:6px;
+      padding-left:16px;
     }
 
-    /* WIZARD */
-    .wizard-shell{
-      margin-top:18px;
+    .meta-list li {
+      margin-bottom:3px;
     }
 
-    .card{
+    .wizard-shell {
+      position:relative;
+      min-height:360px;
+    }
+
+    .card {
       position:relative;
       border-radius:var(--card-radius);
-      background:
-        radial-gradient(circle at top left,rgba(56,189,248,.16),transparent 54%),
-        radial-gradient(circle at bottom right,rgba(45,212,191,.14),transparent 58%),
-        linear-gradient(160deg,#020617,#020617 5%,#020617 40%,#020617 100%);
+      background:radial-gradient(circle at top left,rgba(56,189,248,.16),transparent 54%),
+                  radial-gradient(circle at bottom right,rgba(45,212,191,.14),transparent 58%),
+                  linear-gradient(160deg,#020617,#020617 5%,#020617 40%,#020617 100%);
       border:1px solid rgba(51,65,85,.95);
       box-shadow:var(--shadow-soft);
       padding:18px 18px 16px;
       overflow:hidden;
     }
 
-    .card::before{
+    .card::before {
       content:"";
       position:absolute;
       inset:0;
@@ -356,9 +400,12 @@
       mix-blend-mode:soft-light;
     }
 
-    .card-inner{position:relative;z-index:1;}
+    .card-inner {
+      position:relative;
+      z-index:1;
+    }
 
-    .step-label{
+    .step-label {
       font-size:11px;
       text-transform:uppercase;
       letter-spacing:.16em;
@@ -366,42 +413,44 @@
       margin-bottom:6px;
     }
 
-    .step-title{
+    .step-title {
       font-family:"Montserrat",system-ui;
       font-size:18px;
       margin-bottom:4px;
     }
 
-    .step-subtitle{
+    .step-subtitle {
       font-size:13px;
       color:var(--vi-muted);
       margin-bottom:12px;
     }
 
-    .fields-grid{
+    .fields-grid {
       display:flex;
       flex-direction:column;
       gap:12px;
       margin-bottom:14px;
     }
 
-    .field-group label{
+    .field-group label {
       display:block;
       font-size:12px;
       margin-bottom:4px;
       color:#e5ecf5;
       font-weight:500;
+      white-space:pre-line;
     }
 
-    .field-group small{
+    .field-group small {
       display:block;
       font-size:11px;
       color:var(--vi-muted);
       margin-bottom:4px;
+      white-space:pre-line;
     }
 
     .field-input,
-    .field-textarea{
+    .field-textarea {
       width:100%;
       border-radius:11px;
       border:1px solid rgba(71,85,105,.95);
@@ -415,24 +464,24 @@
       min-height:40px;
     }
 
-    .field-textarea{
+    .field-textarea {
       min-height:90px;
-      max-height:220px;
+      max-height:260px;
     }
 
     .field-input:focus,
-    .field-textarea:focus{
+    .field-textarea:focus {
       border-color:var(--vi-teal);
       box-shadow:0 0 0 1px rgba(34,211,238,.5);
       background:#020617;
     }
 
     .field-input::placeholder,
-    .field-textarea::placeholder{
+    .field-textarea::placeholder {
       color:rgba(148,163,184,.7);
     }
 
-    .progress-row{
+    .progress-row {
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -440,7 +489,7 @@
       margin-top:4px;
     }
 
-    .progress-meta{
+    .progress-meta {
       display:flex;
       flex-direction:column;
       gap:4px;
@@ -448,7 +497,7 @@
       flex:1;
     }
 
-    .progress-bar-shell{
+    .progress-bar-shell {
       position:relative;
       width:100%;
       height:6px;
@@ -458,7 +507,7 @@
       border:1px solid rgba(30,64,175,.8);
     }
 
-    .progress-bar-fill{
+    .progress-bar-fill {
       position:absolute;
       inset:0;
       width:0;
@@ -467,60 +516,53 @@
       transition:width .2s ease-out;
     }
 
-    .progress-text{
+    .progress-text {
       font-size:11px;
       color:var(--vi-muted);
     }
 
-    .nav-buttons{
+    .nav-buttons {
       display:flex;
       align-items:center;
       gap:8px;
     }
 
-    .btn-secondary{
-      background:rgba(15,23,42,.95);
-      color:var(--vi-text);
-      border:1px solid rgba(148,163,184,.75);
-    }
-
-    .btn-secondary:hover{background:rgba(15,23,42,1);}
-
-    .btn:disabled{
-      opacity:.45;
-      cursor:default;
-      transform:none;
-      box-shadow:none;
-    }
-
-    .status-message{
+    .status-message {
       margin-top:10px;
       font-size:12px;
     }
-    .status-success{color:#4ade80;}
-    .status-error{color:#f97373;}
-    .status-neutral{color:var(--vi-muted);}
 
-    .required-badge{color:#f97373;margin-left:2px;}
-    .hidden{display:none;}
+    .status-success {
+      color:#4ade80;
+    }
+
+    .status-error {
+      color:#f97373;
+    }
+
+    .status-neutral {
+      color:var(--vi-muted);
+    }
+
+    .required-badge {
+      color:#f97373;
+      margin-left:2px;
+    }
+
+    .hidden {
+      display:none;
+    }
   </style>
 </head>
 <body>
   <div class="page-shell">
     <div class="layout">
-
-      <!-- TOP BAR -->
+      <!-- TOP LOGO BAR -->
       <div class="top-bar">
         <div class="logo-row">
-          <img
-            class="firmapak-logo"
-            src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Firmapak%20-%20White%20Logo.webp"
-            alt="FirmaPak Logo">
+          <img class="firmapak-logo" src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Firmapak%20-%20White%20Logo.webp" alt="FirmaPak Logo">
         </div>
-        <img
-          class="vi-logo"
-          src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Virtual%20Instinct-03.webp"
-          alt="Virtual Instinct Logo">
+        <img class="vi-logo" src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Virtual%20Instinct-03.webp" alt="Virtual Instinct Logo">
       </div>
 
       <!-- HERO -->
@@ -557,44 +599,7 @@
           </div>
         </div>
 
-        <div class="hero-bottom-grid">
-          <!-- Scenario Design Intake card (left) -->
-          <div class="intake-card">
-            <div class="intake-title">Scenario Design Intake</div>
-            <p class="intake-sub">
-              Use this intake to capture how your customers think, how deals are won or lost,
-              and the exact moments your sales team needs to rehearse.
-            </p>
-
-            <div class="scenario-chips">
-              <span class="chip">Qualifying &amp; Needs Analysis</span>
-              <span class="chip">Proposal Review to Close</span>
-              <span class="chip">Full-flow Medley</span>
-            </div>
-
-            <p class="intake-note">
-              Your responses will be translated into live practice scenarios and Key Moments inside
-              Virtual Instinct. We’ll combine your lost deals, competitive dynamics, and internal
-              sales patterns to build realistic simulations.
-            </p>
-
-            <div class="meta-box">
-              <div class="meta-row">
-                <span class="meta-label">Delivered To</span>
-                <span class="meta-value">Virtual Instinct Scenario Design Team</span>
-              </div>
-              <div class="meta-row">
-                <span class="meta-label">What Happens Next</span>
-                <span class="meta-value">We write scripts, build role-play flows &amp; schedule sessions.</span>
-              </div>
-              <ul class="meta-checklist">
-                <li>✔ On submit, answers are sent to a secure webhook.</li>
-                <li>✔ Zapier handles email delivery &amp; HubSpot contact creation.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- What to expect (right) -->
+        <div class="hero-bottom">
           <div class="expect-card">
             <div class="expect-title">What to Expect</div>
             <div class="expect-columns">
@@ -603,15 +608,15 @@
                 <ul class="expect-list">
                   <li><span class="bullet">✅</span><span>Customer profile &amp; ideal customer analysis</span></li>
                   <li><span class="bullet">✅</span><span>Customer personas &amp; buying dynamics</span></li>
-                  <li><span class="bullet">✅</span><span>Qualifying &amp; needs analysis scenarios</span></li>
-                  <li><span class="bullet">✅</span><span>Proposal review &amp; closing scenarios</span></li>
+                  <li><span class="bullet">✅</span><span>Qualifying &amp; needs analysis scenario inputs</span></li>
+                  <li><span class="bullet">✅</span><span>Proposal review &amp; closing scenario inputs</span></li>
                 </ul>
               </div>
               <div>
                 <div class="expect-section-title">Time &amp; progress</div>
                 <ul class="expect-list">
                   <li><span class="bullet">⏱</span><span>Estimated time: 20–30 minutes</span></li>
-                  <li><span class="bullet">📂</span><span>16 steps to complete</span></li>
+                  <li><span class="bullet">📂</span><span>7 numbered sections</span></li>
                   <li><span class="bullet">📈</span><span>Progress indicator on each step</span></li>
                   <li><span class="bullet">✉️</span><span>Responses emailed to the Virtual Instinct team</span></li>
                 </ul>
@@ -624,665 +629,584 @@
           <button id="start-btn" class="btn btn-primary">Start Consultation</button>
           <span class="hero-cta-hint">Questions will appear below once you start.</span>
         </div>
-        <div class="hero-cta-note">
-          You can complete this in one sitting or come back to it again with the team.
-        </div>
       </section>
 
-      <!-- WIZARD -->
-      <main id="wizard-shell" class="wizard-shell hidden">
-        <section class="card" aria-live="polite">
-          <div class="card-inner">
-            <div id="step-header"></div>
-            <form id="wizard-form">
-              <div id="fields-container" class="fields-grid"></div>
-            </form>
-
-            <div class="progress-row">
-              <div class="progress-meta">
-                <div class="progress-bar-shell" aria-hidden="true">
-                  <div id="progress-bar" class="progress-bar-fill"></div>
-                </div>
-                <div id="progress-text" class="progress-text"></div>
-              </div>
-              <div class="nav-buttons">
-                <button type="button" id="back-btn" class="btn btn-secondary">← Back</button>
-                <button type="button" id="next-btn" class="btn btn-primary">Next →</button>
-              </div>
+      <!-- INTAKE + WIZARD -->
+      <div class="intake-shell">
+        <section class="scenario-intake-card">
+          <div>
+            <h2>Scenario Design Intake</h2>
+            <p class="scenario-tagline">
+              Use this intake to capture how your customers think, how deals are won or lost, and the exact moments your sales team needs to rehearse.
+            </p>
+            <div class="scenario-chips">
+              <span class="chip">Qualifying &amp; Needs Analysis</span>
+              <span class="chip">Proposal Review to Close</span>
+              <span class="chip">Full-Flow Medley</span>
             </div>
-
-            <div id="status" class="status-message status-neutral"></div>
+            <p class="scenario-note">
+              Your responses will be translated into live practice scenarios and Key Moments inside Virtual Instinct. We’ll combine your lost deals, competitive dynamics, and internal sales patterns to build realistic simulations.
+            </p>
+          </div>
+          <div class="scenario-meta">
+            <div class="scenario-meta-row">
+              <span class="meta-label">Delivered To</span>
+              <span class="meta-value">Virtual Instinct Scenario Design Team</span>
+            </div>
+            <div class="scenario-meta-row">
+              <span class="meta-label">What Happens Next</span>
+              <span class="meta-value">We write scripts, build role-play flows &amp; schedule sessions.</span>
+            </div>
+            <ul class="meta-list">
+              <li>✔ Pre-consultation: collect FirmaPak logo, names &amp; emails of all participating salespeople.</li>
+              <li>✔ On submit, answers are sent to a secure webhook.</li>
+              <li>✔ Zapier handles email delivery &amp; HubSpot contact creation.</li>
+            </ul>
           </div>
         </section>
-      </main>
+
+        <main id="consultation-section" class="wizard-shell hidden">
+          <section class="card" aria-live="polite">
+            <div class="card-inner">
+              <div id="step-header"></div>
+              <form id="wizard-form">
+                <div id="fields-container" class="fields-grid"></div>
+              </form>
+
+              <div class="progress-row">
+                <div class="progress-meta">
+                  <div class="progress-bar-shell" aria-hidden="true">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                  </div>
+                  <div id="progress-text" class="progress-text"></div>
+                </div>
+                <div class="nav-buttons">
+                  <button type="button" id="back-btn" class="btn btn-secondary">← Back</button>
+                  <button type="button" id="next-btn" class="btn btn-primary">Next →</button>
+                </div>
+              </div>
+
+              <div id="status" class="status-message status-neutral"></div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   </div>
 
+  <!-- Hidden iframe so Zapier receives POST without leaving this page -->
+  <iframe
+    name="zapier-target"
+    id="zapier-target"
+    class="hidden"
+    title="Zapier submission target"
+  ></iframe>
+
   <script>
-    /*************** CONFIG: ZAPIER WEBHOOK ****************/
+    /********************************************************
+     * CONFIG: YOUR ZAPIER WEBHOOK
+     ********************************************************/
     const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/25619352/ufuigki/";
 
-    /******************** STEPS ****************************/
+    /********************************************************
+     * STEP DEFINITIONS (Option A – all questions preserved)
+     ********************************************************/
     const steps = [
-      /* PRE-CONSULTATION */
       {
-        id:"pre_team",
-        section:"Pre-Consultation",
-        title:"Who will be practicing?",
-        subtitle:"List the salespeople who will participate so we can align scenarios with your team.",
-        fields:[
+        id: "pre_consult",
+        section: "Pre-Consultation",
+        title: "Who will be practicing?",
+        subtitle: "Collect names and emails of all participating salespeople so scenarios align with your team.",
+        fields: [
           {
-            name:"participants",
-            label:"Names & emails of all participating salespeople",
-            type:"textarea",
-            required:false,
-            helper:"You can paste a list or export from your CRM.",
-            placeholder:"Example:\nJane Smith – jane@firmapak.com\nAlex Johnson – alex@firmapak.com"
+            name: "participants",
+            label: "Names & emails of all participating salespeople",
+            type: "textarea",
+            required: false,
+            helper: "You can paste a list or export from your CRM.\n\nExample:\nJane Smith – jane@firmapak.com\nAlex Johnson – alex@firmapak.com",
+            placeholder: "List names, roles, and emails for everyone who will be in practice sessions."
           }
         ]
       },
 
       /* 1. CUSTOMER PROFILE */
       {
-        id:"cp_icp",
-        section:"1. Customer Profile",
-        title:"Ideal Customer Profile (ICP)",
-        subtitle:"Clarify who is a perfect-fit FirmaPak customer.",
-        fields:[
+        id: "cust_icp",
+        section: "1. Customer Profile",
+        title: "Ideal Customer Profile",
+        subtitle: "Understand FirmaPak’s ideal customer to anchor scenario realism.",
+        fields: [
           {
-            name:"cp_icp_who",
-            label:"Who is FirmaPak’s Ideal Customer Profile (ICP)?",
-            type:"textarea",
-            required:false,
-            placeholder:"Describe your ideal customers in plain language."
-          },
-          {
-            name:"cp_icp_fit",
-            label:"What industries, company sizes, or product types best fit?",
-            type:"textarea",
-            required:false,
-            placeholder:"List the industries, size ranges, and product types that are the best fit."
+            name: "ideal_customer_profile",
+            label:
+`Ideal Customer Profile
+
+Who is FirmaPak’s Ideal Customer Profile (ICP)?
+What industries, company sizes, or product types best fit?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe your ICP: industries, size, product types, geography, buying triggers…"
           }
         ]
       },
       {
-        id:"cp_lost_deals",
-        section:"1. Customer Profile",
-        title:"Lost deals & proposal review",
-        subtitle:"We’ll turn these into realistic ‘what actually happens’ scenarios.",
-        fields:[
+        id: "cust_lost_deals",
+        section: "1. Customer Profile",
+        title: "Lost deals & proposal review",
+        subtitle: "We’ll turn real lost deals into realistic practice scenarios.",
+        fields: [
           {
-            name:"cp_lost_companies",
-            label:"Describe four vertical-market companies where you recently lost, got ghosted, or lost to a competitor.",
-            type:"textarea",
-            required:false,
-            helper:"Include the vertical, company, and deal type (lost, ghosted, lost to competitor).",
-            placeholder:"1) Vertical / company / deal type\n2) ..."
+            name: "lost_deals_block",
+            label:
+`Lost Deals & Proposal Review
+
+For four (4) different vertical market companies, tell us where you recently:
+• Lost a deal
+• Pitched and they went silent (ghosted)
+• Lost to a competitor
+
+For each of the four deals, please include:
+• Company & vertical
+• Can we get copies of the proposals used in these four deals?
+• Who was the main contact (title/function)?
+• Why do you believe the deals were lost?
+• What patterns or themes do you see in lost opportunities?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Use one numbered section per deal, including vertical, contact title, outcome, why it was lost, and if a proposal is available."
           },
           {
-            name:"cp_lost_proposals",
-            label:"Can we get copies of the proposals used in these four deals?",
-            type:"textarea",
-            required:false,
-            placeholder:"Where they are stored and how you can share them (drive links, email, etc.)."
+            name: "cust_notes",
+            label: "Notes – Customer Profile",
+            type: "textarea",
+            required: false,
+            placeholder: "Anything else about your customer profile or lost deals we should know before designing scenarios."
           },
           {
-            name:"cp_lost_main_contact",
-            label:"Who was the main contact (title/function) for each of those deals?",
-            type:"textarea",
-            required:false,
-            placeholder:"Include titles and functions, e.g., Brand Manager, Procurement, Plant Manager."
-          },
-          {
-            name:"cp_lost_reasons",
-            label:"Why do you believe those deals were lost?",
-            type:"textarea",
-            required:false,
-            placeholder:"Pricing, responsiveness, technical fit, politics, timing, etc."
-          },
-          {
-            name:"cp_lost_patterns",
-            label:"What patterns or themes do you see in lost opportunities?",
-            type:"textarea",
-            required:false,
-            placeholder:"Summarize the consistent reasons you see across deals."
+            name: "cust_additional_questions",
+            label: "Additional questions – Customer Profile",
+            type: "textarea",
+            required: false,
+            placeholder: "Any questions you’d like us to ask or clarify live during the consultation."
           }
         ]
       },
       {
-        id:"cp_competitive",
-        section:"1. Customer Profile",
-        title:"Competitive landscape",
-        subtitle:"Map how buyers compare FirmaPak to alternatives.",
-        fields:[
+        id: "cust_competitive_usecases",
+        section: "1. Customer Profile",
+        title: "Competitive landscape & use cases",
+        subtitle: "Who you’re compared to and where you stand out.",
+        fields: [
           {
-            name:"cp_competitors",
-            label:"Who are your biggest competitors?",
-            type:"textarea",
-            required:false,
-            placeholder:"List by name and any important segments/regions."
+            name: "competitive_landscape",
+            label:
+`Competitive Landscape
+
+Who are your biggest competitors?
+What do buyers believe these competitors do better?
+Where do those bigger competitors fail or fall short?`,
+            type: "textarea",
+            required: false,
+            placeholder: "List key competitors and what buyers say each does well or poorly."
           },
           {
-            name:"cp_competitors_better",
-            label:"What do buyers believe these competitors do better?",
-            type:"textarea",
-            required:false,
-            placeholder:"Speed, scale, price, brand, perceived safety, etc."
-          },
-          {
-            name:"cp_competitors_fail",
-            label:"Where do those bigger competitors fail or fall short?",
-            type:"textarea",
-            required:false,
-            placeholder:"Service, flexibility, innovation, quality, responsiveness, etc."
-          }
-        ]
-      },
-      {
-        id:"cp_use_cases",
-        section:"1. Customer Profile",
-        title:"Use cases & vertical dynamics",
-        subtitle:"Anchor practice in real blow-mold injection use cases.",
-        fields:[
-          {
-            name:"cp_use_cases",
-            label:"What are the primary use cases for blow-mold injection plastics?",
-            type:"textarea",
-            required:false,
-            placeholder:"Describe the most common applications customers come to you for."
-          },
-          {
-            name:"cp_vertical_unique",
-            label:"What makes FirmaPak unique in certain verticals or markets?",
-            type:"textarea",
-            required:false,
-            placeholder:"Capabilities, speed, engineering support, sustainability, etc."
-          },
-          {
-            name:"cp_differentiators",
-            label:"What differentiators resonate most with customers?",
-            type:"textarea",
-            required:false,
-            placeholder:"What actually lands in conversations and moves deals forward?"
-          },
-          {
-            name:"cp_notes",
-            label:"Customer Profile – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Any notes you want us to keep in mind for this section."
-          },
-          {
-            name:"cp_additional_questions",
-            label:"Customer Profile – additional questions for the team",
-            type:"textarea",
-            required:false,
-            placeholder:"Questions you’d like to explore during live conversation."
+            name: "use_cases_dynamics",
+            label:
+`Use Cases & Vertical Dynamics
+
+What are the primary use cases for blow-mold injection plastics?
+What makes FirmaPak unique in certain verticals or markets?
+What differentiators resonate most with customers?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe common applications, vertical nuances, and which differentiators actually land with customers."
           }
         ]
       },
 
       /* 2. CUSTOMER PERSONAS & BUYING DYNAMICS */
       {
-        id:"persona_profiles",
-        section:"2. Customer Personas & Buying Dynamics",
-        title:"Typical buyer profiles",
-        subtitle:"Define who is at the table during qualification and proposal review.",
-        fields:[
+        id: "personas_profiles",
+        section: "2. Customer Personas & Buying Dynamics",
+        title: "Typical buyer profiles",
+        subtitle: "Build realistic customer personas for actors to portray.",
+        fields: [
           {
-            name:"persona_common_buyers",
-            label:"Who are the most common buyers at the qualification and proposal stages?",
-            type:"textarea",
-            required:false,
-            placeholder:"Brand Managers, Procurement, Plant Managers, Supply Chain, Sustainability, etc."
-          },
-          {
-            name:"persona_education_experience",
-            label:"What is their education and experience level?",
-            type:"textarea",
-            required:false,
-            placeholder:"Typical background, years in role, technical depth, etc."
-          },
-          {
-            name:"persona_roles_functions",
-            label:"What is their role or job function?",
-            type:"textarea",
-            required:false,
-            placeholder:"Describe responsibilities and how they interact with suppliers."
+            name: "typical_buyer_profiles",
+            label:
+`Typical Buyer Profiles
+
+Who are the most common buyers at the qualification and proposal stages?
+What is their education and experience level?
+What is their role or job function?
+
+Examples:
+• Brand Managers
+• Procurement
+• Plant Managers
+• Supply Chain Managers
+• Sustainability Leaders`,
+            type: "textarea",
+            required: false,
+            placeholder: "For each persona, list title, experience level, and what they care most about in this decision."
           }
         ]
       },
       {
-        id:"persona_dynamics",
-        section:"2. Customer Personas & Buying Dynamics",
-        title:"Role-based decision dynamics",
-        subtitle:"Capture how each persona thinks, decides, and feels pressure.",
-        fields:[
+        id: "personas_dynamics",
+        section: "2. Customer Personas & Buying Dynamics",
+        title: "Decision dynamics & internal pressures",
+        subtitle: "How different roles evaluate the same decision.",
+        fields: [
           {
-            name:"persona_view_purchase",
-            label:"How does each persona view the purchase differently?",
-            type:"textarea",
-            required:false,
-            placeholder:"What does each persona care about most?"
+            name: "role_decision_dynamics",
+            label:
+`Role-Based Decision Dynamics
+
+How does each persona view the purchase differently?
+How do they gather information and evaluate suppliers?
+What internal pressures do they experience?
+• Revenue?
+• Risk mitigation?
+• On-time delivery?
+• Sustainability requirements?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe how each role approaches risk, information gathering, and internal expectations."
           },
           {
-            name:"persona_evaluate_suppliers",
-            label:"How do they gather information and evaluate suppliers?",
-            type:"textarea",
-            required:false,
-            placeholder:"RFPs, references, pilots, site visits, etc."
+            name: "risk_perception_block",
+            label:
+`Risk Perception
+
+What worries them most about choosing a smaller supplier?
+What assurances or proof points do they require?`,
+            type: "textarea",
+            required: false,
+            placeholder: "List common fears and the proof (data, references, certifications) that calms those fears."
           },
           {
-            name:"persona_internal_pressures",
-            label:"What internal pressures do they experience?",
-            type:"textarea",
-            required:false,
-            placeholder:"Revenue, risk mitigation, on-time delivery, sustainability requirements, etc."
-          }
-        ]
-      },
-      {
-        id:"persona_risk",
-        section:"2. Customer Personas & Buying Dynamics",
-        title:"Risk perception & proof",
-        subtitle:"Script objections and reassurance moments from real concerns.",
-        fields:[
-          {
-            name:"persona_risk_worries",
-            label:"What worries them most about choosing a smaller supplier?",
-            type:"textarea",
-            required:false,
-            placeholder:"Capacity, reliability, financial stability, transition risk, etc."
+            name: "personas_notes",
+            label: "Notes – Customer Personas & Buying Dynamics",
+            type: "textarea",
+            required: false,
+            placeholder: "Anything else about stakeholders, influencers, champions, or internal politics."
           },
           {
-            name:"persona_risk_assurance",
-            label:"What assurances or proof points do they require?",
-            type:"textarea",
-            required:false,
-            placeholder:"Certifications, case studies, SLAs, references, audits, etc."
-          },
-          {
-            name:"persona_notes",
-            label:"Personas & Buying Dynamics – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Anything else about emotional tone, style, or politics we should know."
-          },
-          {
-            name:"persona_additional_questions",
-            label:"Personas & Buying Dynamics – additional questions",
-            type:"textarea",
-            required:false,
-            placeholder:"Questions you want to bring into workshop conversation."
+            name: "personas_additional_questions",
+            label: "Additional questions – Customer Personas",
+            type: "textarea",
+            required: false,
+            placeholder: "Questions you’d like us to explore with you live."
           }
         ]
       },
 
       /* 3. QUALIFYING & NEEDS ANALYSIS */
       {
-        id:"qual_pipeline",
-        section:"3. Qualifying & Needs Analysis",
-        title:"Pipeline mechanics",
-        subtitle:"Define what good qualification looks like in your world.",
-        fields:[
+        id: "qual_pipeline",
+        section: "3. Qualifying & Needs Analysis – Scenario Development",
+        title: "Pipeline mechanics",
+        subtitle: "Identify what ‘qualified’ actually means.",
+        fields: [
           {
-            name:"qual_lead_qualified",
-            label:"What makes a lead qualified in your pipeline?",
-            type:"textarea",
-            required:false,
-            placeholder:"Budget, authority, need, timeline, technical fit, etc."
-          },
-          {
-            name:"qual_info_before_proposal",
-            label:"What specific information must a rep uncover before drafting a proposal?",
-            type:"textarea",
-            required:false,
-            placeholder:"Volume, specs, timing, decision process, success metrics, etc."
-          },
-          {
-            name:"qual_minimum_info",
-            label:"What is the minimum viable information needed to price or scope a project?",
-            type:"textarea",
-            required:false,
-            placeholder:"What is the bare minimum needed to avoid bad proposals?"
+            name: "pipeline_mechanics",
+            label:
+`Pipeline Mechanics
+
+What makes a lead qualified in your pipeline?
+What specific information must a rep uncover before drafting a proposal?
+What is the minimum viable information needed to price or scope a project?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe your qualification checklist and minimum data needed to move forward."
           }
         ]
       },
       {
-        id:"qual_bottlenecks",
-        section:"3. Qualifying & Needs Analysis",
-        title:"Pipeline bottlenecks & mistakes",
-        subtitle:"Target the friction points reps feel in early conversations.",
-        fields:[
+        id: "qual_bottlenecks",
+        section: "3. Qualifying & Needs Analysis – Scenario Development",
+        title: "Pipeline bottlenecks & mistakes",
+        subtitle: "Where conversations stall and why.",
+        fields: [
           {
-            name:"qual_where_stuck",
-            label:"Where do reps get stuck most frequently in early stages?",
-            type:"textarea",
-            required:false,
-            placeholder:"Discovery, technical scoping, navigating stakeholders, etc."
-          },
-          {
-            name:"qual_stall_causes",
-            label:"What causes leads to stall before moving to proposal review?",
-            type:"textarea",
-            required:false,
-            placeholder:"Internal priorities, budget uncertainty, unclear next steps, etc."
-          },
-          {
-            name:"qual_top_three_mistakes",
-            label:"What are the top three mistakes reps make during qualification?",
-            type:"textarea",
-            required:false,
-            placeholder:"Example: jumping to solution, not defining success, weak next steps, etc."
+            name: "pipeline_bottlenecks",
+            label:
+`Pipeline Bottlenecks
+
+Where do reps get stuck most frequently in early stages?
+What causes leads to stall before moving to proposal review?
+What are the top three mistakes reps make during qualification?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Share concrete examples of stalled deals, repeated patterns, and common rep missteps."
           }
         ]
       },
       {
-        id:"qual_pain_motivation",
-        section:"3. Qualifying & Needs Analysis",
-        title:"Pain points, motivations & volatility",
-        subtitle:"Capture why customers move, and what keeps them on the fence.",
-        fields:[
+        id: "qual_pain_competitive",
+        section: "3. Qualifying & Needs Analysis – Scenario Development",
+        title: "Pain points, motivations & competitive outlook",
+        subtitle: "Why customers switch and who else they consider.",
+        fields: [
           {
-            name:"qual_switch_reasons",
-            label:"Why do customers switch suppliers?",
-            type:"textarea",
-            required:false,
-            placeholder:"Service failures, quality issues, cost volatility, etc."
+            name: "pain_points_motivations",
+            label:
+`Pain Points & Motivations
+
+Why do customers switch suppliers?
+What common objections or brush-offs do reps face early?
+How often do buyers mention:
+• Supply chain volatility?
+• Resin variability?
+• Capacity, timeline, or changeovers?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe real phrases buyers use when talking about pain, risk, or operational challenges."
           },
           {
-            name:"qual_early_objections",
-            label:"What common objections or brush-offs do reps face early?",
-            type:"textarea",
-            required:false,
-            placeholder:"“We’re happy with our current supplier”, “Send me something”, etc."
+            name: "competitive_outlook",
+            label:
+`Competitive Outlook
+
+Which competitors are mentioned by name in early calls?
+What do buyers like about them?
+Where do those competitors fall short?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Provide competitor names and buyer commentary we can mirror in scripts."
           },
           {
-            name:"qual_volatility_mentions",
-            label:"How often do buyers mention supply chain volatility, resin variability, capacity, timeline, or changeovers?",
-            type:"textarea",
-            required:false,
-            placeholder:"Include exact phrases or themes if you can."
-          }
-        ]
-      },
-      {
-        id:"qual_competitive_decision",
-        section:"3. Qualifying & Needs Analysis",
-        title:"Competitive outlook & decision criteria",
-        subtitle:"Tie early-stage conversations to how buyers ultimately choose.",
-        fields:[
-          {
-            name:"qual_competitors_named",
-            label:"Which competitors are mentioned by name in early calls?",
-            type:"textarea",
-            required:false,
-            placeholder:"List who shows up most often."
+            name: "decision_criteria_block",
+            label:
+`Decision Criteria
+
+What is the #1 reason customers choose FirmaPak over competitors?
+What is the #1 reason they walk away?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Summarize the deciding factors on both wins and losses."
           },
           {
-            name:"qual_competitors_like",
-            label:"What do buyers like about those competitors?",
-            type:"textarea",
-            required:false,
-            placeholder:"Speed, scale, pricing, reputation, etc."
+            name: "qual_notes",
+            label: "Notes – Qualifying & Needs Analysis",
+            type: "textarea",
+            required: false,
+            placeholder: "Any specific calls or opportunities we should base scenarios on."
           },
           {
-            name:"qual_competitors_short",
-            label:"Where do those competitors fall short?",
-            type:"textarea",
-            required:false,
-            placeholder:"Gaps you want your team to lean into during practice."
-          },
-          {
-            name:"qual_decision_choose",
-            label:"What is the #1 reason customers choose FirmaPak over competitors?",
-            type:"textarea",
-            required:false,
-            placeholder:"The thing that truly tips decisions in your favor."
-          },
-          {
-            name:"qual_decision_walk_away",
-            label:"What is the #1 reason they walk away?",
-            type:"textarea",
-            required:false,
-            placeholder:"The most common deal-killer."
-          },
-          {
-            name:"qual_notes",
-            label:"Qualifying & Needs Analysis – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Additional notes for this section."
-          },
-          {
-            name:"qual_additional_questions",
-            label:"Qualifying & Needs Analysis – additional questions",
-            type:"textarea",
-            required:false,
-            placeholder:"Questions you’d like to explore in live scenario design."
+            name: "qual_additional_questions",
+            label: "Additional questions – Qualifying & Needs Analysis",
+            type: "textarea",
+            required: false,
+            placeholder: "Additional prompts you’d like us to cover."
           }
         ]
       },
 
       /* 4. PROPOSAL REVIEW TO CLOSE */
       {
-        id:"prc_proposal_process",
-        section:"4. Proposal Review to Close",
-        title:"Proposal process & format",
-        subtitle:"Clarify how proposals are delivered and experienced by buyers.",
-        fields:[
+        id: "proposal_process",
+        section: "4. Proposal Review to Close – Scenario Development",
+        title: "Proposal process",
+        subtitle: "Clarify what happens from proposal send to decision.",
+        fields: [
           {
-            name:"prc_proposals_copies",
-            label:"Can we get copies of four proposals in different verticals that did not close?",
-            type:"textarea",
-            required:false,
-            placeholder:"Where they live and who can grant us access."
-          },
-          {
-            name:"prc_delivery",
-            label:"How are proposals typically delivered? (Email, video call, in person, etc.)",
-            type:"textarea",
-            required:false,
-            placeholder:"Describe the most common paths."
-          },
-          {
-            name:"prc_format",
-            label:"What is the format or style of your proposals?",
-            type:"textarea",
-            required:false,
-            placeholder:"Single option vs multiple options, volume incentives, visuals, etc."
+            name: "proposal_process_block",
+            label:
+`Proposal Process
+
+Can we get copies of four proposals in different verticals that did not close?
+How are proposals typically delivered? (Email? Video call? In person?)
+What is the format or style?
+• Single option?
+• Multiple options?
+• Volume incentives?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe where proposals are stored, how they’re delivered, and how options are structured."
           }
         ]
       },
       {
-        id:"prc_negotiation",
-        section:"4. Proposal Review to Close",
-        title:"Negotiation dynamics & decision makers",
-        subtitle:"Pinpoint where reps need more reps in late-stage conversations.",
-        fields:[
+        id: "proposal_negotiation",
+        section: "4. Proposal Review to Close – Scenario Development",
+        title: "Negotiation dynamics & decision makers",
+        subtitle: "What needs to be practiced during proposal walkthroughs and final asks.",
+        fields: [
           {
-            name:"prc_negotiate_elements",
-            label:"What elements of proposals do buyers negotiate most?",
-            type:"textarea",
-            required:false,
-            placeholder:"Price, payment terms, volume, lead times, changeover costs, etc."
+            name: "negotiation_dynamics",
+            label:
+`Negotiation Dynamics
+
+What elements of proposals do buyers negotiate most?
+Where do buyers scrutinize details or pricing?
+What objections arise most frequently at this stage?
+Where do reps tend to lose buyer engagement during the walkthrough?
+How do you pre or trial close or use techniques to tie down deals?
+What is the next action after receiving a signed deal or PO?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Share typical negotiation flow, sticking points, and how reps attempt to close today."
           },
           {
-            name:"prc_scrutinize_details",
-            label:"Where do buyers scrutinize details or pricing the most?",
-            type:"textarea",
-            required:false,
-            placeholder:"Specific pages, clauses, or line items."
+            name: "proposal_decision_makers",
+            label:
+`Decision Makers
+
+Who makes the final decision?
+Is it the same contact from the beginning, or additional stakeholders?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Outline the decision-making chain and who appears late in the process."
           },
           {
-            name:"prc_late_objections",
-            label:"What objections arise most frequently at this stage?",
-            type:"textarea",
-            required:false,
-            placeholder:"Risk, implementation effort, switching cost, internal politics, etc."
+            name: "proposal_notes",
+            label: "Notes – Proposal Review to Close",
+            type: "textarea",
+            required: false,
+            placeholder: "Any specific late-stage deals we should mirror in scenarios."
           },
           {
-            name:"prc_engagement_loss",
-            label:"Where do reps tend to lose buyer engagement during the walkthrough?",
-            type:"textarea",
-            required:false,
-            placeholder:"Moments where energy consistently drops."
-          },
-          {
-            name:"prc_trial_close",
-            label:"How do you pre-close or trial close or otherwise tie down deals?",
-            type:"textarea",
-            required:false,
-            placeholder:"Specific questions or techniques you encourage."
-          },
-          {
-            name:"prc_next_action",
-            label:"What is the next action after receiving a signed deal or PO?",
-            type:"textarea",
-            required:false,
-            placeholder:"Handoff, kickoff, implementation steps, etc."
-          },
-          {
-            name:"prc_decision_makers",
-            label:"Who makes the final decision? Is it the same contact from the beginning, or additional stakeholders?",
-            type:"textarea",
-            required:false,
-            placeholder:"Detail the decision-making path."
-          },
-          {
-            name:"prc_notes",
-            label:"Proposal Review to Close – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Any other details for late-stage practice."
-          },
-          {
-            name:"prc_additional_questions",
-            label:"Proposal Review to Close – additional questions",
-            type:"textarea",
-            required:false,
-            placeholder:"Anything you want to dig into together."
+            name: "proposal_additional_questions",
+            label: "Additional questions – Proposal Review to Close",
+            type: "textarea",
+            required: false,
+            placeholder: "Questions you’d like us to explore during the live consultation."
           }
         ]
       },
 
-      /* 5. VISIBILITY OF KEY MOMENTS */
+      /* 5. KEY MOMENT VISIBILITY */
       {
-        id:"visibility",
-        section:"5. Determine Visibility of Key Moments",
-        title:"Key Moment visibility preferences",
-        subtitle:"Clarify whether highlights are private, team-visible, or a mix.",
-        fields:[
+        id: "visibility",
+        section: "5. Determine Visibility of Key Moments",
+        title: "Key Moment visibility preferences",
+        subtitle: "Clarify who can see recorded highlights inside Virtual Instinct.",
+        fields: [
           {
-            name:"vis_preference",
-            label:"What is FirmaPak’s preference regarding Key Moment visibility?",
-            type:"textarea",
-            required:false,
-            placeholder:"Private to salesperson, public to team, or a mix depending on content."
+            name: "visibility_preferences",
+            label:
+`Discussion
+
+What is FirmaPak’s preference regarding Key Moment visibility?
+(Private to the salesperson, public within the team, or a combination depending on content?)`,
+            type: "textarea",
+            required: false,
+            placeholder: "Describe your default preference and any exceptions."
           },
           {
-            name:"vis_confidential_topics",
-            label:"Are there topics or practice moments that should remain confidential?",
-            type:"textarea",
-            required:false,
-            placeholder:"Sensitive accounts, pricing structures, strategic topics, etc."
+            name: "confidential_topics",
+            label:
+`Confidential Topics
+
+Are there topics or practice moments that should remain confidential?
+Will leadership want access to all clips or selected clips?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Note any accounts, pricing, or internal strategies that require special handling."
           },
           {
-            name:"vis_leadership_access",
-            label:"Will leadership want access to all clips or selected clips only?",
-            type:"textarea",
-            required:false,
-            placeholder:"Who should see what, and under what conditions."
-          },
-          {
-            name:"vis_notes",
-            label:"Key Moment visibility – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Any internal guidelines or compliance constraints."
+            name: "visibility_notes",
+            label: "Notes – Key Moment Visibility",
+            type: "textarea",
+            required: false,
+            placeholder: "Additional guidance or constraints for what can be recorded and shared."
           }
         ]
       },
 
-      /* 6. PRE-SCHEDULE VIRTUAL IMPROV PROGRAM */
+      /* 6. VIRTUAL IMPROV PROGRAM */
       {
-        id:"improv_schedule",
-        section:"6. Pre-Schedule Virtual Improv Program",
-        title:"Virtual improv scheduling",
-        subtitle:"Align weekly improv sessions with your team’s rhythm.",
-        fields:[
+        id: "improv_schedule",
+        section: "6. Pre-Schedule Virtual Improv Program",
+        title: "Virtual improv scheduling",
+        subtitle: "Reinforce scenario skills with weekly improv-based sessions.",
+        fields: [
           {
-            name:"improv_best_times",
-            label:"What days/times work best for the team?",
-            type:"textarea",
-            required:false,
-            placeholder:"Preferred time zones, days of the week, and ideal session length."
+            name: "improv_program_schedule",
+            label:
+`Discussion
+
+What days/times work best for the team?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Include time zones, preferred days of week, and any recurring constraints."
           },
           {
-            name:"improv_notes",
-            label:"Virtual Improv Program – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Busy seasons, blackout dates, or travel-heavy periods."
+            name: "improv_notes",
+            label: "Notes – Virtual Improv Program",
+            type: "textarea",
+            required: false,
+            placeholder: "Busy seasons, plant shutdowns, travel-heavy periods, or blackout dates."
           }
         ]
       },
 
-      /* 7. END-OF-PERIOD DEBRIEF */
+      /* 7. END OF ACTIVE PRACTICE PERIOD DEBRIEF */
       {
-        id:"debrief",
-        section:"7. End of Active Practice Period Debrief",
-        title:"End-of-practice debrief",
-        subtitle:"Proposed date: Monday, February 2. Align on outcomes, attendees, and recap format.",
-        fields:[
+        id: "debrief",
+        section: "7. Pre-Schedule End of Active Practice Period Debrief",
+        title: "End-of-practice debrief",
+        subtitle: "Review outcomes, Key Moments, challenges, wins, and next steps.",
+        fields: [
           {
-            name:"debrief_attendees",
-            label:"Who should attend the debrief?",
-            type:"textarea",
-            required:false,
-            placeholder:"Sales leaders, enablement, reps, operations, etc."
+            name: "debrief_attendees",
+            label:
+`Discussion
+
+Who should attend the debrief?`,
+            type: "textarea",
+            required: false,
+            placeholder: "List the roles or specific people who should be in the debrief meeting."
           },
           {
-            name:"debrief_outcomes",
-            label:"What outcomes matter most to measure success?",
-            type:"textarea",
-            required:false,
-            placeholder:"Behavior change, pipeline movement, win rates, deal quality, etc."
+            name: "debrief_outcomes",
+            label:
+`What outcomes matter most to measure success?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Examples: behavior change, pipeline movement, win rates, deal quality, ramp time…"
           },
           {
-            name:"debrief_recap",
-            label:"Should a written or video recap be included?",
-            type:"textarea",
-            required:false,
-            placeholder:"Preferred format and who it should be shared with."
+            name: "debrief_recap",
+            label:
+`Should a written or video recap be included?`,
+            type: "textarea",
+            required: false,
+            placeholder: "Share your preferences for recap format and who it should be shared with."
           },
           {
-            name:"debrief_notes",
-            label:"End-of-period debrief – notes",
-            type:"textarea",
-            required:false,
-            placeholder:"Anything else you’d like us to know as we close out the period."
+            name: "debrief_notes",
+            label: "Notes – End of Active Practice Period Debrief",
+            type: "textarea",
+            required: false,
+            placeholder: "Any additional comments, questions, or context you want us to know."
           }
         ]
       }
     ];
 
-    /***************** STATE & DOM REFS ********************/
+    /********************************************************
+     * STATE & DOM REFS
+     ********************************************************/
     let currentStepIndex = 0;
     const answers = {};
 
     const stepHeaderEl = document.getElementById("step-header");
     const fieldsContainerEl = document.getElementById("fields-container");
-    const progressBarEl = document.getElementById("progress-bar");
+    const progressBarEl  = document.getElementById("progress-bar");
     const progressTextEl = document.getElementById("progress-text");
-    const backBtn = document.getElementById("back-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const statusEl = document.getElementById("status");
-    const startBtn = document.getElementById("start-btn");
-    const wizardShell = document.getElementById("wizard-shell");
+    const backBtn        = document.getElementById("back-btn");
+    const nextBtn        = document.getElementById("next-btn");
+    const statusEl       = document.getElementById("status");
+    const consultationSection = document.getElementById("consultation-section");
+    const startBtn       = document.getElementById("start-btn");
 
-    /******************** RENDERING ************************/
-    function renderStep(){
+    /********************************************************
+     * RENDERING
+     ********************************************************/
+    function renderStep() {
       const step = steps[currentStepIndex];
       const total = steps.length;
       const stepNumber = currentStepIndex + 1;
@@ -1294,20 +1218,21 @@
       `;
 
       fieldsContainerEl.innerHTML = "";
-      step.fields.forEach(field=>{
+      step.fields.forEach(field => {
         const wrapper = document.createElement("div");
         wrapper.className = "field-group";
 
         const fieldId = `field_${field.name}`;
         let labelHtml = `<label for="${fieldId}">${field.label}`;
-        if(field.required) labelHtml += ` <span class="required-badge">*</span>`;
+        if (field.required) labelHtml += ` <span class="required-badge">*</span>`;
         labelHtml += `</label>`;
 
-        const helperHtml = field.helper ? `<small>${field.helper}</small>` : "";
+        let helperHtml = field.helper ? `<small>${field.helper}</small>` : "";
+
         const existingValue = answers[field.name] || "";
         let controlHtml = "";
 
-        if(field.type === "textarea"){
+        if (field.type === "textarea") {
           controlHtml = `
             <textarea
               id="${fieldId}"
@@ -1316,7 +1241,7 @@
               placeholder="${field.placeholder || ""}"
             >${existingValue}</textarea>
           `;
-        }else{
+        } else {
           controlHtml = `
             <input
               id="${fieldId}"
@@ -1344,54 +1269,56 @@
       statusEl.className = "status-message status-neutral";
     }
 
-    function collectCurrentStepValues(){
+    function collectCurrentStepValues() {
       const step = steps[currentStepIndex];
       let valid = true;
       let firstInvalidField = null;
 
-      step.fields.forEach(field=>{
+      step.fields.forEach(field => {
         const fieldId = `field_${field.name}`;
         const el = document.getElementById(fieldId);
-        if(!el) return;
+        if (!el) return;
 
         const value = el.value.trim();
         answers[field.name] = value;
 
-        if(field.required && !value){
+        if (field.required && !value) {
           valid = false;
-          if(!firstInvalidField) firstInvalidField = el;
+          if (!firstInvalidField) firstInvalidField = el;
         }
 
-        if(field.required && field.type === "email" && value){
+        if (field.required && field.type === "email" && value) {
           const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-          if(!emailOk){
+          if (!emailOk) {
             valid = false;
-            if(!firstInvalidField) firstInvalidField = el;
+            if (!firstInvalidField) firstInvalidField = el;
           }
         }
       });
 
-      if(!valid){
+      if (!valid) {
         statusEl.textContent = "Please complete the required fields on this step.";
         statusEl.className = "status-message status-error";
-        if(firstInvalidField) firstInvalidField.focus();
+        if (firstInvalidField) firstInvalidField.focus();
         return false;
       }
 
       return true;
     }
 
-    /******************** SUBMIT ***************************/
-    function handleSubmit(){
-      if(!collectCurrentStepValues()) return;
+    /********************************************************
+     * SUBMIT – HIDDEN IFRAME TO ZAPIER
+     ********************************************************/
+    function handleSubmit() {
+      if (!collectCurrentStepValues()) return;
 
       const payloadObj = {
-        meta:{
-          source:"FirmaPak Scenario Development Consultation",
-          submittedAt:new Date().toISOString(),
-          userAgent:navigator.userAgent
+        meta: {
+          source: "FirmaPak Scenario Development Consultation",
+          submittedAt: new Date().toISOString(),
+          userAgent: navigator.userAgent
         },
-        answers:{...answers}
+        answers: { ...answers }
       };
 
       const payload = JSON.stringify(payloadObj);
@@ -1399,56 +1326,60 @@
       statusEl.textContent = "Submitting your responses...";
       statusEl.className = "status-message status-neutral";
 
-      try{
-        const form = document.createElement("form");
-        form.method = "POST";
-        form.action = WEBHOOK_URL;
-
-        const hidden = document.createElement("input");
-        hidden.type = "hidden";
-        hidden.name = "payload";
-        hidden.value = payload;
-        form.appendChild(hidden);
-
-        document.body.appendChild(form);
-        form.submit();
-
-        statusEl.textContent = "Thanks! Your responses are being sent to the Virtual Instinct team.";
-        statusEl.className = "status-message status-success";
-        nextBtn.disabled = true;
-        backBtn.disabled = true;
-      }catch(err){
-        console.error("Form POST failed:", err);
-        statusEl.textContent = "We couldn’t submit the form. Please refresh and try again, or email your Virtual Instinct contact.";
+      if (!WEBHOOK_URL) {
+        statusEl.textContent = "No webhook URL configured. Please contact the Virtual Instinct team.";
         statusEl.className = "status-message status-error";
+        return;
       }
+
+      // Build a temporary form that posts to Zapier in a hidden iframe
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = WEBHOOK_URL;
+      form.target = "zapier-target";
+
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = "payload";
+      hidden.value = payload;
+      form.appendChild(hidden);
+
+      document.body.appendChild(form);
+      form.submit();
+
+      // Show success UI on this page
+      statusEl.textContent = "Success! Your consultation responses have been securely submitted to the Virtual Instinct team. You may close this tab.";
+      statusEl.className = "status-message status-success";
+      nextBtn.disabled = true;
+      backBtn.disabled = true;
     }
 
-    /********************* EVENTS **************************/
-    backBtn.addEventListener("click", ()=>{
-      if(currentStepIndex === 0) return;
-      if(!collectCurrentStepValues()) return;
+    /********************************************************
+     * EVENTS
+     ********************************************************/
+    backBtn.addEventListener("click", () => {
+      if (currentStepIndex === 0) return;
+      if (!collectCurrentStepValues()) return;
       currentStepIndex -= 1;
       renderStep();
     });
 
-    nextBtn.addEventListener("click", ()=>{
+    nextBtn.addEventListener("click", () => {
       const isLastStep = currentStepIndex === steps.length - 1;
-      if(isLastStep){
+      if (isLastStep) {
         handleSubmit();
-      }else{
-        if(!collectCurrentStepValues()) return;
+      } else {
+        if (!collectCurrentStepValues()) return;
         currentStepIndex += 1;
         renderStep();
       }
     });
 
-    startBtn.addEventListener("click", ()=>{
-      wizardShell.classList.remove("hidden");
+    startBtn.addEventListener("click", () => {
+      consultationSection.classList.remove("hidden");
       startBtn.disabled = true;
       startBtn.textContent = "Consultation Started";
       renderStep();
-      window.scrollTo({top:wizardShell.offsetTop - 40,behavior:"smooth"});
     });
   </script>
 </body>
