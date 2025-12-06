@@ -369,6 +369,7 @@
       margin-bottom:4px;
     }
 
+    /* FORM CARD (RIGHT SIDE) */
     .wizard-shell {
       position:relative;
       min-height:360px;
@@ -401,6 +402,14 @@
       z-index:1;
     }
 
+    .step-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--vi-muted);
+      margin-bottom:6px;
+    }
+
     .step-title {
       font-family:"Montserrat",system-ui;
       font-size:18px;
@@ -413,21 +422,91 @@
       margin-bottom:12px;
     }
 
-    .status-message {
-      margin-top:10px;
+    /* HUBSPOT FORM WRAPPER – white card so text is readable */
+    .hs-wrapper {
+      max-width:680px;
+      width:100%;
+      margin:8px auto 4px;
+    }
+
+    .hs-form-frame {
+      background:#ffffff;
+      border-radius:18px;
+      padding:20px 18px;
+      box-shadow:0 18px 40px rgba(0,0,0,.6);
+    }
+
+    .hs-form-frame iframe {
+      width:100% !important;
+      border:0 !important;
+      border-radius:14px;
+      display:block;
+    }
+
+    /* HubSpot inline (in case this embed is not iframe-based) */
+    .hs-form * {
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+
+    .hs-form fieldset {
+      border:none !important;
+      padding:0 !important;
+      margin:0 !important;
+    }
+
+    .hs-form .hs-form-field {
+      margin-bottom:14px;
+    }
+
+    .hs-form label {
       font-size:12px;
+      font-weight:500;
+      color:#020617;
+      margin-bottom:4px;
+      display:block;
     }
 
-    .status-success {
-      color:#4ade80;
+    .hs-input,
+    .hs-form textarea {
+      width:100%;
+      border-radius:999px;
+      border:1px solid #cbd5e1;
+      padding:10px 14px;
+      font-size:13px;
+      background:#f9fafb;
+      color:#020617;
+      outline:none;
+      transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
     }
 
-    .status-error {
-      color:#f97373;
+    .hs-form textarea {
+      border-radius:16px;
+      min-height:90px;
     }
 
-    .status-neutral {
-      color:var(--vi-muted);
+    .hs-input:focus,
+    .hs-form textarea:focus {
+      border-color:#0ea5e9;
+      box-shadow:0 0 0 1px rgba(14,165,233,.4);
+      background:#ffffff;
+    }
+
+    .hs-button {
+      border-radius:999px !important;
+      background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue)) !important;
+      border:none !important;
+      color:#0b1220 !important;
+      font-weight:600 !important;
+      padding:10px 22px !important;
+      font-size:13px !important;
+      cursor:pointer !important;
+      box-shadow:0 10px 25px rgba(15,118,110,.6) !important;
+      text-transform:none !important;
+    }
+
+    .hs-button:hover {
+      transform:translateY(-1px);
+      box-shadow:0 14px 30px rgba(8,47,73,.8) !important;
     }
 
     .hidden {
@@ -498,8 +577,8 @@
                 <ul class="expect-list">
                   <li><span class="bullet">⏱</span><span>Estimated time: 20–30 minutes</span></li>
                   <li><span class="bullet">📂</span><span>7 sections to complete</span></li>
-                  <li><span class="bullet">📈</span><span>Progress indicator on each step</span></li>
-                  <li><span class="bullet">✉️</span><span>Responses emailed to the Virtual Instinct team</span></li>
+                  <li><span class="bullet">📈</span><span>Progress indicator inside the form</span></li>
+                  <li><span class="bullet">✉️</span><span>Responses logged directly in HubSpot</span></li>
                 </ul>
               </div>
             </div>
@@ -508,11 +587,11 @@
 
         <div class="hero-cta-row">
           <button id="start-btn" class="btn btn-primary">Start Consultation</button>
-          <span class="hero-cta-hint">Questions will appear below once you start.</span>
+          <span class="hero-cta-hint">The intake will appear below once you start.</span>
         </div>
       </section>
 
-      <!-- CONSULTATION SECTION (HUBSPOT FORM) -->
+      <!-- CONSULTATION SECTION (HIDDEN UNTIL START) -->
       <section id="consultation-section" class="consultation-section hidden">
         <div class="content-row">
           <!-- LEFT: INTRO CARD -->
@@ -520,7 +599,7 @@
             <h2>Scenario Design Intake</h2>
             <p class="intro-subtitle">
               Use this intake to capture how your customers think, how deals are won or lost,
-              and the exact moments your sales team needs to rehearse.
+              and the exact moments your sales team needs to rehearse inside Virtual Instinct.
             </p>
 
             <div class="scenario-chips">
@@ -530,9 +609,9 @@
             </div>
 
             <p class="intro-note">
-              Your responses will be translated into live practice scenarios and Key Moments inside
-              Virtual Instinct. We’ll combine your lost deals, competitive dynamics, and internal
-              sales patterns to build realistic simulations.
+              Your responses will be translated into live practice scenarios and Key Moments in
+              Virtual Instinct. We combine your lost deals, competitive dynamics, and internal
+              sales patterns to build realistic, high-impact simulations.
             </p>
 
             <div class="meta-box">
@@ -542,31 +621,31 @@
               </div>
               <div class="meta-row">
                 <span class="meta-label">What Happens Next</span>
-                <span class="meta-value">We write scripts, build role-play flows &amp; schedule sessions.</span>
+                <span class="meta-value">We review your intake, write scripts, design role-play flows &amp; schedule sessions.</span>
               </div>
               <ul class="meta-checklist">
-                <li>✔ Answers are securely submitted to HubSpot.</li>
+                <li>✔ Your answers are securely submitted to HubSpot.</li>
                 <li>✔ The Virtual Instinct team is notified automatically.</li>
               </ul>
             </div>
           </aside>
 
-          <!-- RIGHT: HUBSPOT CARD -->
+          <!-- RIGHT: HUBSPOT FORM CARD -->
           <main class="wizard-shell">
             <section class="card" aria-live="polite">
               <div class="card-inner">
-                <h3 class="step-title">Start Your Consultation</h3>
+                <div class="step-label">Start Your Consultation</div>
+                <h3 class="step-title">Customer Personas &amp; Buying Dynamics</h3>
                 <p class="step-subtitle">Complete the form below to begin.</p>
 
-                <!-- HubSpot Form Embed -->
-                <script src="https://js.hsforms.net/forms/embed/23746819.js" defer></script>
-                <div class="hs-form-frame"
-                     data-region="na1"
-                     data-form-id="2b432e6d-400d-433b-899e-d0cc1654bb44"
-                     data-portal-id="23746819">
+                <div class="hs-wrapper">
+                  <script src="https://js.hsforms.net/forms/embed/23746819.js" defer></script>
+                  <div class="hs-form-frame"
+                       data-region="na1"
+                       data-form-id="2b432e6d-400d-433b-899e-d0cc1654bb44"
+                       data-portal-id="23746819">
+                  </div>
                 </div>
-
-                <div id="status" class="status-message status-neutral"></div>
               </div>
             </section>
           </main>
@@ -576,22 +655,15 @@
   </div>
 
   <script>
-    // Show consultation section when Start button is clicked
     const startBtn = document.getElementById("start-btn");
     const consultationSection = document.getElementById("consultation-section");
 
-    if (startBtn && consultationSection) {
-      startBtn.addEventListener("click", () => {
-        consultationSection.classList.remove("hidden");
-        startBtn.disabled = true;
-        startBtn.textContent = "Consultation Started";
-
-        // Scroll to the form for a smoother experience
-        consultationSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    }
+    startBtn.addEventListener("click", () => {
+      consultationSection.classList.remove("hidden");
+      startBtn.disabled = true;
+      startBtn.textContent = "Consultation Started";
+      consultationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   </script>
 </body>
 </html>
-
-
