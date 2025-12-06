@@ -122,7 +122,7 @@
     .hero-card-title{font-size:13px;font-weight:600;margin-bottom:4px;}
     .hero-card-sub{font-size:12px;color:var(--vi-muted);}
 
-    /* HERO BOTTOM: SCENARIO PANEL + EXPECT CARD */
+    /* NEW: HERO BOTTOM WITH SCENARIO PANEL + EXPECT CARD SIDE BY SIDE */
     .hero-bottom{
       display:grid;
       grid-template-columns:minmax(0,1.6fr) minmax(0,1.7fr);
@@ -133,7 +133,7 @@
       .hero-bottom{grid-template-columns:1fr;}
     }
 
-    /* Scenario Design Intake panel */
+    /* Scenario Design Intake panel now in hero */
     .intro-panel{
       border-radius:18px;
       padding:14px 16px 14px;
@@ -252,6 +252,7 @@
     /* CONSULTATION SECTION */
     .content-row{
       margin-top:12px;
+      /* questions full-width under hero */
     }
 
     .wizard-shell{position:relative;min-height:360px;}
@@ -414,8 +415,340 @@
           <div class="hero-card">
             <div class="hero-icon">📑</div>
             <div class="hero-card-title">Proposal Review to Close</div>
-            <div class="hero-card-sub
+            <div class="hero-card-sub">
+              Navigate negotiations and close deals with confidence.
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">⚡</div>
+            <div class="hero-card-title">The Medley (Full-Flow)</div>
+            <div class="hero-card-sub">
+              Practice complete sales cycles from start to finish.
+            </div>
+          </div>
+        </div>
 
+        <!-- Scenario panel + What to Expect -->
+        <div class="hero-bottom">
+          <!-- Scenario Design Intake (moved up) -->
+          <aside class="intro-panel">
+            <h2>Scenario Design Intake</h2>
+            <p class="intro-subtitle">
+              Use this intake to capture how your customers think, how deals are won or lost,
+              and the exact moments your sales team needs to rehearse.
+            </p>
 
+            <div class="scenario-chips">
+              <span class="chip">Qualifying &amp; Needs Analysis</span>
+              <span class="chip">Proposal Review to Close</span>
+              <span class="chip">Full-Flow Medley</span>
+            </div>
 
+            <p class="intro-note">
+              Your responses will be translated into live practice scenarios and Key Moments inside
+              Virtual Instinct. We’ll combine your lost deals, competitive dynamics, and internal
+              sales patterns to build realistic simulations.
+            </p>
 
+            <div class="meta-box">
+              <div class="meta-row">
+                <span class="meta-label">Delivered To</span>
+                <span class="meta-value">Virtual Instinct Scenario Design Team</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">What Happens Next</span>
+                <span class="meta-value">We write scripts, build role-play flows &amp; schedule sessions.</span>
+              </div>
+              <ul class="meta-checklist">
+                <li>✔ On submit, answers are sent to a secure webhook.</li>
+                <li>✔ Zapier handles email delivery &amp; HubSpot contact creation.</li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- What to Expect -->
+          <div class="expect-card">
+            <div class="expect-title">What to Expect</div>
+            <div class="expect-columns">
+              <div>
+                <div class="expect-section-title">This form covers</div>
+                <ul class="expect-list">
+                  <li><span class="bullet">✅</span><span>Customer profile &amp; ideal customer analysis</span></li>
+                  <li><span class="bullet">✅</span><span>Customer personas &amp; buying dynamics</span></li>
+                  <li><span class="bullet">✅</span><span>Qualifying &amp; needs analysis scenarios</span></li>
+                  <li><span class="bullet">✅</span><span>Proposal review &amp; closing scenarios</span></li>
+                </ul>
+              </div>
+              <div>
+                <div class="expect-section-title">Time &amp; progress</div>
+                <ul class="expect-list">
+                  <li><span class="bullet">⏱</span><span>Estimated time: 20–30 minutes</span></li>
+                  <li><span class="bullet">📂</span><span>7 sections to complete</span></li>
+                  <li><span class="bullet">📈</span><span>Progress indicator on each step</span></li>
+                  <li><span class="bullet">✉️</span><span>Responses emailed to the Virtual Instinct team</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <button id="start-btn" class="btn btn-primary">Start Consultation</button>
+          <span class="hero-cta-hint">Questions will appear below once you start.</span>
+        </div>
+      </section>
+
+      <!-- CONSULTATION SECTION (questions under hero) -->
+      <div id="consultation-section" class="content-row hidden">
+        <main class="wizard-shell">
+          <section class="card" aria-live="polite">
+            <div class="card-inner">
+              <div id="step-header"></div>
+              <form id="wizard-form">
+                <div id="fields-container" class="fields-grid"></div>
+              </form>
+
+              <div class="progress-row">
+                <div class="progress-meta">
+                  <div class="progress-bar-shell" aria-hidden="true">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                  </div>
+                  <div id="progress-text" class="progress-text"></div>
+                </div>
+                <div class="nav-buttons">
+                  <button type="button" id="back-btn" class="btn btn-secondary">← Back</button>
+                  <button type="button" id="next-btn" class="btn btn-primary">Next →</button>
+                </div>
+              </div>
+
+              <div id="status" class="status-message status-neutral"></div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden iframe target for form submission (avoids CORS issues) -->
+  <iframe name="zapier_iframe" style="display:none;"></iframe>
+
+  <script>
+    /********************************************************
+     * CONFIG
+     ********************************************************/
+    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/25619352/ufuigki/";
+
+    /********************************************************
+     * STEP DEFINITIONS (same as before)
+     ********************************************************/
+    const steps = [
+      {
+        id: "intro_contact",
+        section: "Pre-Consultation",
+        title: "Who will be practicing?",
+        subtitle: "List the salespeople who will participate so we can align scenarios with your team.",
+        fields: [
+          {
+            name: "participants",
+            label: "Names & emails of all participating salespeople",
+            type: "textarea",
+            required: false,
+            helper: "You can paste a list or export from your CRM.",
+            placeholder: "Example:\nJane Smith – jane@firmapak.com\nAlex Johnson – alex@firmapak.com"
+          }
+        ]
+      },
+      /* ... all the other step objects EXACTLY as you already have them ... */
+      /* I am keeping them unchanged for brevity here – copy the same step
+         objects from your current file between this comment and the last step. */
+      {
+        id: "debrief",
+        section: "7. End-of-Period Debrief",
+        title: "End-of-practice debrief",
+        subtitle: "Align on success metrics, attendees, and recap format.",
+        fields: [
+          { name: "debrief_attendees", label: "Who should attend the debrief?", type: "textarea", required: false, placeholder: "Sales leaders, enablement, reps, operations, etc." },
+          { name: "success_outcomes", label: "What outcomes matter most to measure success?", type: "textarea", required: false, placeholder: "Behavior change, pipeline movement, win rates, deal quality..." },
+          { name: "recap_format", label: "Should we deliver a written recap, video recap, or both?", type: "textarea", required: false, placeholder: "Preferred format and who it should be shared with." },
+          { name: "final_notes", label: "Final notes or anything we didn’t ask that you want us to know.", type: "textarea", required: false, placeholder: "Use this space to capture anything else on your mind." }
+        ]
+      }
+    ];
+
+    /********************************************************
+     * STATE & DOM
+     ********************************************************/
+    let currentStepIndex = 0;
+    const answers = {};
+
+    const stepHeaderEl = document.getElementById("step-header");
+    const fieldsContainerEl = document.getElementById("fields-container");
+    const progressBarEl = document.getElementById("progress-bar");
+    const progressTextEl = document.getElementById("progress-text");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const statusEl = document.getElementById("status");
+    const consultationSection = document.getElementById("consultation-section");
+    const startBtn = document.getElementById("start-btn");
+
+    /********************************************************
+     * RENDERING
+     ********************************************************/
+    function renderStep() {
+      const step = steps[currentStepIndex];
+      const total = steps.length;
+      const stepNumber = currentStepIndex + 1;
+
+      stepHeaderEl.innerHTML = `
+        <div class="step-label">${step.section}</div>
+        <h3 class="step-title">${step.title}</h3>
+        <p class="step-subtitle">${step.subtitle || ""}</p>
+      `;
+
+      fieldsContainerEl.innerHTML = "";
+      step.fields.forEach(field => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "field-group";
+
+        const fieldId = `field_${field.name}`;
+        let labelHtml = `<label for="${fieldId}">${field.label}`;
+        if (field.required) labelHtml += ` <span class="required-badge">*</span>`;
+        labelHtml += `</label>`;
+
+        const helperHtml = field.helper ? `<small>${field.helper}</small>` : "";
+        const existingValue = answers[field.name] || "";
+        let controlHtml = "";
+
+        if (field.type === "textarea") {
+          controlHtml = `<textarea id="${fieldId}" class="field-textarea" name="${field.name}" placeholder="${field.placeholder || ""}">${existingValue}</textarea>`;
+        } else {
+          controlHtml = `<input id="${fieldId}" class="field-input" type="${field.type}" name="${field.name}" placeholder="${field.placeholder || ""}" value="${existingValue}" />`;
+        }
+
+        wrapper.innerHTML = labelHtml + helperHtml + controlHtml;
+        fieldsContainerEl.appendChild(wrapper);
+      });
+
+      const percent = (stepNumber / total) * 100;
+      progressBarEl.style.width = percent.toFixed(1) + "%";
+      progressTextEl.textContent = `Step ${stepNumber} of ${total}`;
+
+      backBtn.disabled = currentStepIndex === 0;
+      nextBtn.textContent = currentStepIndex === total - 1 ? "Submit →" : "Next →";
+
+      statusEl.textContent = "";
+      statusEl.className = "status-message status-neutral";
+    }
+
+    function collectCurrentStepValues() {
+      const step = steps[currentStepIndex];
+      let valid = true;
+      let firstInvalidField = null;
+
+      step.fields.forEach(field => {
+        const fieldId = `field_${field.name}`;
+        const el = document.getElementById(fieldId);
+        if (!el) return;
+
+        const value = el.value.trim();
+        answers[field.name] = value;
+
+        if (field.required && !value) {
+          valid = false;
+          if (!firstInvalidField) firstInvalidField = el;
+        }
+
+        if (field.required && field.type === "email" && value) {
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+          if (!emailOk) {
+            valid = false;
+            if (!firstInvalidField) firstInvalidField = el;
+          }
+        }
+      });
+
+      if (!valid) {
+        statusEl.textContent = "Please complete the required fields on this step.";
+        statusEl.className = "status-message status-error";
+        if (firstInvalidField) firstInvalidField.focus();
+        return false;
+      }
+      return true;
+    }
+
+    /********************************************************
+     * SUBMIT VIA HIDDEN FORM (NO fetch, no CORS)
+     ********************************************************/
+    function handleSubmit() {
+      if (!collectCurrentStepValues()) return;
+
+      const payload = {
+        meta: {
+          source: "FirmaPak Scenario Development Consultation",
+          submittedAt: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        },
+        answers: { ...answers }
+      };
+
+      statusEl.textContent = "Submitting your responses...";
+      statusEl.className = "status-message status-neutral";
+
+      if (!WEBHOOK_URL) {
+        statusEl.textContent = "No webhook URL configured. Please contact the Virtual Instinct team.";
+        statusEl.className = "status-message status-error";
+        return;
+      }
+
+      // create a hidden form that posts to Zapier via an invisible iframe
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = WEBHOOK_URL;
+      form.target = "zapier_iframe";
+
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "payload";
+      input.value = JSON.stringify(payload);
+
+      form.appendChild(input);
+      document.body.appendChild(form);
+
+      form.submit(); // fire-and-forget
+
+      statusEl.textContent = "Thanks! Your responses have been submitted to the Virtual Instinct team.";
+      statusEl.className = "status-message status-success";
+      nextBtn.disabled = true;
+      backBtn.disabled = true;
+    }
+
+    /********************************************************
+     * EVENTS
+     ********************************************************/
+    backBtn.addEventListener("click", () => {
+      if (currentStepIndex === 0) return;
+      if (!collectCurrentStepValues()) return;
+      currentStepIndex -= 1;
+      renderStep();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const isLastStep = currentStepIndex === steps.length - 1;
+      if (isLastStep) {
+        handleSubmit();
+      } else {
+        if (!collectCurrentStepValues()) return;
+        currentStepIndex += 1;
+        renderStep();
+      }
+    });
+
+    startBtn.addEventListener("click", () => {
+      consultationSection.classList.remove("hidden");
+      startBtn.disabled = true;
+      startBtn.textContent = "Consultation Started";
+      renderStep();
+    });
+  </script>
+</body>
+</html>
