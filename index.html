@@ -243,7 +243,6 @@
       margin-top:4px;
       padding-left:16px;
     }
-
     .meta-checklist li{margin-bottom:3px;}
 
     .expect-card{
@@ -329,7 +328,7 @@
       margin-top:6px;
     }
 
-    /* CONSULTATION WIZARD */
+    /* WIZARD */
     .wizard-shell{
       margin-top:18px;
     }
@@ -612,7 +611,7 @@
                 <div class="expect-section-title">Time &amp; progress</div>
                 <ul class="expect-list">
                   <li><span class="bullet">⏱</span><span>Estimated time: 20–30 minutes</span></li>
-                  <li><span class="bullet">📂</span><span>7 sections to complete</span></li>
+                  <li><span class="bullet">📂</span><span>16 steps to complete</span></li>
                   <li><span class="bullet">📈</span><span>Progress indicator on each step</span></li>
                   <li><span class="bullet">✉️</span><span>Responses emailed to the Virtual Instinct team</span></li>
                 </ul>
@@ -665,8 +664,9 @@
 
     /******************** STEPS ****************************/
     const steps = [
+      /* PRE-CONSULTATION */
       {
-        id:"intro_contact",
+        id:"pre_team",
         section:"Pre-Consultation",
         title:"Who will be practicing?",
         subtitle:"List the salespeople who will participate so we can align scenarios with your team.",
@@ -681,67 +681,97 @@
           }
         ]
       },
+
+      /* 1. CUSTOMER PROFILE */
       {
-        id:"cust_icp",
+        id:"cp_icp",
         section:"1. Customer Profile",
-        title:"Ideal Customer Profile",
-        subtitle:"Who is a perfect-fit FirmaPak customer?",
+        title:"Ideal Customer Profile (ICP)",
+        subtitle:"Clarify who is a perfect-fit FirmaPak customer.",
         fields:[
           {
-            name:"ideal_customer_profile",
-            label:"Describe your Ideal Customer Profile (ICP).",
+            name:"cp_icp_who",
+            label:"Who is FirmaPak’s Ideal Customer Profile (ICP)?",
             type:"textarea",
             required:false,
-            placeholder:"Industries, company size, product types, geography, buying triggers..."
+            placeholder:"Describe your ideal customers in plain language."
+          },
+          {
+            name:"cp_icp_fit",
+            label:"What industries, company sizes, or product types best fit?",
+            type:"textarea",
+            required:false,
+            placeholder:"List the industries, size ranges, and product types that are the best fit."
           }
         ]
       },
       {
-        id:"cust_lost_deals",
+        id:"cp_lost_deals",
         section:"1. Customer Profile",
-        title:"Lost deals & silent proposals",
-        subtitle:"We’ll turn these into realistic 'what actually happens' scenarios.",
+        title:"Lost deals & proposal review",
+        subtitle:"We’ll turn these into realistic ‘what actually happens’ scenarios.",
         fields:[
           {
-            name:"lost_deals",
-            label:"List four vertical-market companies where you recently lost or stalled deals.",
+            name:"cp_lost_companies",
+            label:"Describe four vertical-market companies where you recently lost, got ghosted, or lost to a competitor.",
             type:"textarea",
             required:false,
-            helper:"Include: what happened, main contact title, what you believe caused the loss or ghosting.",
-            placeholder:"1) Vertical / company / what happened / main contact / why it was lost\n2)..."
+            helper:"Include the vertical, company, and deal type (lost, ghosted, lost to competitor).",
+            placeholder:"1) Vertical / company / deal type\n2) ..."
           },
           {
-            name:"lost_deals_proposals",
-            label:"Can you share proposals used in these four deals? How will you share them?",
+            name:"cp_lost_proposals",
+            label:"Can we get copies of the proposals used in these four deals?",
             type:"textarea",
             required:false,
-            placeholder:"Shared drive, email attachments, screen-share examples, etc."
+            placeholder:"Where they are stored and how you can share them (drive links, email, etc.)."
           },
           {
-            name:"lost_deals_patterns",
+            name:"cp_lost_main_contact",
+            label:"Who was the main contact (title/function) for each of those deals?",
+            type:"textarea",
+            required:false,
+            placeholder:"Include titles and functions, e.g., Brand Manager, Procurement, Plant Manager."
+          },
+          {
+            name:"cp_lost_reasons",
+            label:"Why do you believe those deals were lost?",
+            type:"textarea",
+            required:false,
+            placeholder:"Pricing, responsiveness, technical fit, politics, timing, etc."
+          },
+          {
+            name:"cp_lost_patterns",
             label:"What patterns or themes do you see in lost opportunities?",
             type:"textarea",
             required:false,
-            placeholder:"Pricing, responsiveness, specs, risk concerns, internal politics..."
+            placeholder:"Summarize the consistent reasons you see across deals."
           }
         ]
       },
       {
-        id:"cust_competitive",
+        id:"cp_competitive",
         section:"1. Customer Profile",
         title:"Competitive landscape",
-        subtitle:"Who do your buyers compare you to and why?",
+        subtitle:"Map how buyers compare FirmaPak to alternatives.",
         fields:[
           {
-            name:"competitive_landscape",
-            label:"Who are your biggest competitors and what do buyers believe they do better?",
+            name:"cp_competitors",
+            label:"Who are your biggest competitors?",
             type:"textarea",
             required:false,
-            placeholder:"List competitors and what buyers say about them."
+            placeholder:"List by name and any important segments/regions."
           },
           {
-            name:"competitor_gaps",
-            label:"Where do larger competitors fail or fall short?",
+            name:"cp_competitors_better",
+            label:"What do buyers believe these competitors do better?",
+            type:"textarea",
+            required:false,
+            placeholder:"Speed, scale, price, brand, perceived safety, etc."
+          },
+          {
+            name:"cp_competitors_fail",
+            label:"Where do those bigger competitors fail or fall short?",
             type:"textarea",
             required:false,
             placeholder:"Service, flexibility, innovation, quality, responsiveness, etc."
@@ -749,365 +779,461 @@
         ]
       },
       {
-        id:"cust_use_cases",
+        id:"cp_use_cases",
         section:"1. Customer Profile",
         title:"Use cases & vertical dynamics",
-        subtitle:"Anchor practice in real blow-mold injection scenarios.",
+        subtitle:"Anchor practice in real blow-mold injection use cases.",
         fields:[
           {
-            name:"use_cases",
-            label:"Primary use cases for blow-mold injection plastics.",
+            name:"cp_use_cases",
+            label:"What are the primary use cases for blow-mold injection plastics?",
             type:"textarea",
             required:false,
             placeholder:"Describe the most common applications customers come to you for."
           },
           {
-            name:"vertical_uniqueness",
+            name:"cp_vertical_unique",
             label:"What makes FirmaPak unique in certain verticals or markets?",
             type:"textarea",
             required:false,
             placeholder:"Capabilities, speed, engineering support, sustainability, etc."
           },
           {
-            name:"differentiators",
-            label:"Which differentiators resonate most with customers?",
+            name:"cp_differentiators",
+            label:"What differentiators resonate most with customers?",
             type:"textarea",
             required:false,
-            placeholder:"What actually lands during sales conversations?"
+            placeholder:"What actually lands in conversations and moves deals forward?"
           },
           {
-            name:"section1_notes",
-            label:"Notes or additional questions for Customer Profile.",
+            name:"cp_notes",
+            label:"Customer Profile – notes",
             type:"textarea",
             required:false,
-            placeholder:"Anything we should know before designing scenarios for this section."
+            placeholder:"Any notes you want us to keep in mind for this section."
+          },
+          {
+            name:"cp_additional_questions",
+            label:"Customer Profile – additional questions for the team",
+            type:"textarea",
+            required:false,
+            placeholder:"Questions you’d like to explore during live conversation."
           }
         ]
       },
+
+      /* 2. CUSTOMER PERSONAS & BUYING DYNAMICS */
       {
-        id:"personas_profiles",
-        section:"2. Personas & Buying Dynamics",
+        id:"persona_profiles",
+        section:"2. Customer Personas & Buying Dynamics",
         title:"Typical buyer profiles",
-        subtitle:"Who is actually in the room at qualification and proposal review?",
+        subtitle:"Define who is at the table during qualification and proposal review.",
         fields:[
           {
-            name:"typical_buyers",
-            label:"Who are the most common buyers?",
+            name:"persona_common_buyers",
+            label:"Who are the most common buyers at the qualification and proposal stages?",
             type:"textarea",
             required:false,
-            helper:"Include titles (Brand Manager, Procurement, Plant Manager, etc.) and level of experience.",
-            placeholder:"List each persona, their role, and what they care about."
+            placeholder:"Brand Managers, Procurement, Plant Managers, Supply Chain, Sustainability, etc."
+          },
+          {
+            name:"persona_education_experience",
+            label:"What is their education and experience level?",
+            type:"textarea",
+            required:false,
+            placeholder:"Typical background, years in role, technical depth, etc."
+          },
+          {
+            name:"persona_roles_functions",
+            label:"What is their role or job function?",
+            type:"textarea",
+            required:false,
+            placeholder:"Describe responsibilities and how they interact with suppliers."
           }
         ]
       },
       {
-        id:"personas_decision_dynamics",
-        section:"2. Personas & Buying Dynamics",
-        title:"Decision dynamics & pressures",
-        subtitle:"How do different personas view the same decision?",
+        id:"persona_dynamics",
+        section:"2. Customer Personas & Buying Dynamics",
+        title:"Role-based decision dynamics",
+        subtitle:"Capture how each persona thinks, decides, and feels pressure.",
         fields:[
           {
-            name:"decision_dynamics",
-            label:"How does each persona view the purchase and evaluate suppliers?",
+            name:"persona_view_purchase",
+            label:"How does each persona view the purchase differently?",
             type:"textarea",
             required:false,
-            placeholder:"What data/information do they want? How do they compare options?"
+            placeholder:"What does each persona care about most?"
           },
           {
-            name:"internal_pressures",
+            name:"persona_evaluate_suppliers",
+            label:"How do they gather information and evaluate suppliers?",
+            type:"textarea",
+            required:false,
+            placeholder:"RFPs, references, pilots, site visits, etc."
+          },
+          {
+            name:"persona_internal_pressures",
             label:"What internal pressures do they experience?",
             type:"textarea",
             required:false,
-            placeholder:"Revenue, risk mitigation, on-time delivery, sustainability requirements..."
+            placeholder:"Revenue, risk mitigation, on-time delivery, sustainability requirements, etc."
           }
         ]
       },
       {
-        id:"personas_risk",
-        section:"2. Personas & Buying Dynamics",
-        title:"Risk perception of a smaller supplier",
-        subtitle:"We’ll script objections and reassurance moments from this.",
+        id:"persona_risk",
+        section:"2. Customer Personas & Buying Dynamics",
+        title:"Risk perception & proof",
+        subtitle:"Script objections and reassurance moments from real concerns.",
         fields:[
           {
-            name:"risk_perception",
-            label:"What worries buyers most about choosing a smaller supplier?",
+            name:"persona_risk_worries",
+            label:"What worries them most about choosing a smaller supplier?",
             type:"textarea",
             required:false,
             placeholder:"Capacity, reliability, financial stability, transition risk, etc."
           },
           {
-            name:"risk_reassurance",
+            name:"persona_risk_assurance",
             label:"What assurances or proof points do they require?",
             type:"textarea",
             required:false,
-            placeholder:"Certifications, case studies, SLAs, references, audits..."
+            placeholder:"Certifications, case studies, SLAs, references, audits, etc."
           },
           {
-            name:"section2_notes",
-            label:"Notes or additional questions for Personas & Buying Dynamics.",
+            name:"persona_notes",
+            label:"Personas & Buying Dynamics – notes",
             type:"textarea",
             required:false,
-            placeholder:"Anything else about internal politics, influencers, or champions."
+            placeholder:"Anything else about emotional tone, style, or politics we should know."
+          },
+          {
+            name:"persona_additional_questions",
+            label:"Personas & Buying Dynamics – additional questions",
+            type:"textarea",
+            required:false,
+            placeholder:"Questions you want to bring into workshop conversation."
           }
         ]
       },
+
+      /* 3. QUALIFYING & NEEDS ANALYSIS */
       {
         id:"qual_pipeline",
         section:"3. Qualifying & Needs Analysis",
         title:"Pipeline mechanics",
-        subtitle:"Define what 'qualified' really means for your team.",
+        subtitle:"Define what good qualification looks like in your world.",
         fields:[
           {
-            name:"qualified_lead",
+            name:"qual_lead_qualified",
             label:"What makes a lead qualified in your pipeline?",
             type:"textarea",
             required:false,
-            placeholder:"Budget, authority, need, timeline, technical fit..."
+            placeholder:"Budget, authority, need, timeline, technical fit, etc."
           },
           {
-            name:"info_before_proposal",
-            label:"What information must a rep uncover before drafting a proposal?",
+            name:"qual_info_before_proposal",
+            label:"What specific information must a rep uncover before drafting a proposal?",
             type:"textarea",
             required:false,
-            placeholder:"Volume, specs, timing, decision process, success metrics..."
+            placeholder:"Volume, specs, timing, decision process, success metrics, etc."
           },
           {
-            name:"minimum_info",
-            label:"Minimum viable information needed to price or scope a project.",
+            name:"qual_minimum_info",
+            label:"What is the minimum viable information needed to price or scope a project?",
             type:"textarea",
             required:false,
-            placeholder:"What’s the bare minimum that still leads to good proposals?"
+            placeholder:"What is the bare minimum needed to avoid bad proposals?"
           }
         ]
       },
       {
         id:"qual_bottlenecks",
         section:"3. Qualifying & Needs Analysis",
-        title:"Where reps get stuck",
-        subtitle:"We’ll build practice around your real-world friction points.",
+        title:"Pipeline bottlenecks & mistakes",
+        subtitle:"Target the friction points reps feel in early conversations.",
         fields:[
           {
-            name:"pipeline_bottlenecks",
-            label:"Where do reps get stuck most frequently?",
+            name:"qual_where_stuck",
+            label:"Where do reps get stuck most frequently in early stages?",
             type:"textarea",
             required:false,
-            placeholder:"Early discovery, technical scoping, stakeholder mapping..."
+            placeholder:"Discovery, technical scoping, navigating stakeholders, etc."
           },
           {
-            name:"stall_causes",
-            label:"What causes leads to stall before proposal review?",
+            name:"qual_stall_causes",
+            label:"What causes leads to stall before moving to proposal review?",
             type:"textarea",
             required:false,
-            placeholder:"Internal delays, budget uncertainty, competing priorities..."
+            placeholder:"Internal priorities, budget uncertainty, unclear next steps, etc."
           },
           {
-            name:"top_3_mistakes",
-            label:"Top three mistakes reps make during qualification.",
+            name:"qual_top_three_mistakes",
+            label:"What are the top three mistakes reps make during qualification?",
             type:"textarea",
             required:false,
-            placeholder:"Example: jumping to solution, not defining success, weak next steps..."
+            placeholder:"Example: jumping to solution, not defining success, weak next steps, etc."
           }
         ]
       },
       {
-        id:"qual_pain_points",
+        id:"qual_pain_motivation",
         section:"3. Qualifying & Needs Analysis",
-        title:"Pain points, motivations & competitors",
-        subtitle:"Why customers leave current suppliers and who they mention.",
+        title:"Pain points, motivations & volatility",
+        subtitle:"Capture why customers move, and what keeps them on the fence.",
         fields:[
           {
-            name:"switch_reasons",
+            name:"qual_switch_reasons",
             label:"Why do customers switch suppliers?",
             type:"textarea",
             required:false,
-            placeholder:"Service failures, quality issues, cost volatility..."
+            placeholder:"Service failures, quality issues, cost volatility, etc."
           },
           {
-            name:"early_objections",
-            label:"What common objections or brush-offs appear early?",
+            name:"qual_early_objections",
+            label:"What common objections or brush-offs do reps face early?",
             type:"textarea",
             required:false,
-            placeholder:"\"We’re happy with our current supplier\", \"Send me something\"..."
+            placeholder:"“We’re happy with our current supplier”, “Send me something”, etc."
           },
           {
-            name:"volatility_mentions",
+            name:"qual_volatility_mentions",
             label:"How often do buyers mention supply chain volatility, resin variability, capacity, timeline, or changeovers?",
             type:"textarea",
             required:false,
-            placeholder:"Any specific language we should mirror in scenarios?"
-          },
-          {
-            name:"competitors_early",
-            label:"Which competitors are mentioned by name in early calls and why?",
-            type:"textarea",
-            required:false,
-            placeholder:"What do buyers say those competitors do well or poorly?"
-          },
-          {
-            name:"decision_criteria",
-            label:"#1 reason customers choose FirmaPak vs #1 reason they walk away.",
-            type:"textarea",
-            required:false,
-            placeholder:"Talent, responsiveness, innovation, price, risk tolerance..."
-          },
-          {
-            name:"section3_notes",
-            label:"Notes or additional questions for Qualifying & Needs Analysis.",
-            type:"textarea",
-            required:false,
-            placeholder:"Any specific calls we should base a scenario on."
+            placeholder:"Include exact phrases or themes if you can."
           }
         ]
       },
       {
-        id:"proposal_process",
-        section:"4. Proposal Review to Close",
-        title:"Proposal delivery & format",
-        subtitle:"How proposals show up for buyers and how they’re structured.",
+        id:"qual_competitive_decision",
+        section:"3. Qualifying & Needs Analysis",
+        title:"Competitive outlook & decision criteria",
+        subtitle:"Tie early-stage conversations to how buyers ultimately choose.",
         fields:[
           {
-            name:"proposal_examples",
-            label:"Can you share four proposals (different verticals) that did not close?",
+            name:"qual_competitors_named",
+            label:"Which competitors are mentioned by name in early calls?",
             type:"textarea",
             required:false,
-            placeholder:"Where they’re stored, who can grant us access, etc."
+            placeholder:"List who shows up most often."
           },
           {
-            name:"proposal_delivery",
-            label:"How are proposals typically delivered?",
+            name:"qual_competitors_like",
+            label:"What do buyers like about those competitors?",
             type:"textarea",
             required:false,
-            placeholder:"Email, video call walkthrough, in-person meeting..."
+            placeholder:"Speed, scale, pricing, reputation, etc."
           },
           {
-            name:"proposal_format",
-            label:"What format or style do you use?",
+            name:"qual_competitors_short",
+            label:"Where do those competitors fall short?",
             type:"textarea",
             required:false,
-            placeholder:"Single option vs multiple options, volume incentives, T&Cs, visuals..."
+            placeholder:"Gaps you want your team to lean into during practice."
+          },
+          {
+            name:"qual_decision_choose",
+            label:"What is the #1 reason customers choose FirmaPak over competitors?",
+            type:"textarea",
+            required:false,
+            placeholder:"The thing that truly tips decisions in your favor."
+          },
+          {
+            name:"qual_decision_walk_away",
+            label:"What is the #1 reason they walk away?",
+            type:"textarea",
+            required:false,
+            placeholder:"The most common deal-killer."
+          },
+          {
+            name:"qual_notes",
+            label:"Qualifying & Needs Analysis – notes",
+            type:"textarea",
+            required:false,
+            placeholder:"Additional notes for this section."
+          },
+          {
+            name:"qual_additional_questions",
+            label:"Qualifying & Needs Analysis – additional questions",
+            type:"textarea",
+            required:false,
+            placeholder:"Questions you’d like to explore in live scenario design."
+          }
+        ]
+      },
+
+      /* 4. PROPOSAL REVIEW TO CLOSE */
+      {
+        id:"prc_proposal_process",
+        section:"4. Proposal Review to Close",
+        title:"Proposal process & format",
+        subtitle:"Clarify how proposals are delivered and experienced by buyers.",
+        fields:[
+          {
+            name:"prc_proposals_copies",
+            label:"Can we get copies of four proposals in different verticals that did not close?",
+            type:"textarea",
+            required:false,
+            placeholder:"Where they live and who can grant us access."
+          },
+          {
+            name:"prc_delivery",
+            label:"How are proposals typically delivered? (Email, video call, in person, etc.)",
+            type:"textarea",
+            required:false,
+            placeholder:"Describe the most common paths."
+          },
+          {
+            name:"prc_format",
+            label:"What is the format or style of your proposals?",
+            type:"textarea",
+            required:false,
+            placeholder:"Single option vs multiple options, volume incentives, visuals, etc."
           }
         ]
       },
       {
-        id:"negotiation_dynamics",
+        id:"prc_negotiation",
         section:"4. Proposal Review to Close",
         title:"Negotiation dynamics & decision makers",
-        subtitle:"Where buyers push back and how final decisions are made.",
+        subtitle:"Pinpoint where reps need more reps in late-stage conversations.",
         fields:[
           {
-            name:"negotiation_elements",
+            name:"prc_negotiate_elements",
             label:"What elements of proposals do buyers negotiate most?",
             type:"textarea",
             required:false,
-            placeholder:"Price, payment terms, volume, lead times, changeover costs..."
+            placeholder:"Price, payment terms, volume, lead times, changeover costs, etc."
           },
           {
-            name:"proposal_objections",
+            name:"prc_scrutinize_details",
+            label:"Where do buyers scrutinize details or pricing the most?",
+            type:"textarea",
+            required:false,
+            placeholder:"Specific pages, clauses, or line items."
+          },
+          {
+            name:"prc_late_objections",
             label:"What objections arise most frequently at this stage?",
             type:"textarea",
             required:false,
-            placeholder:"Risk, implementation effort, switching cost, internal politics..."
+            placeholder:"Risk, implementation effort, switching cost, internal politics, etc."
           },
           {
-            name:"engagement_loss",
-            label:"Where do reps tend to lose buyer engagement during walkthroughs?",
+            name:"prc_engagement_loss",
+            label:"Where do reps tend to lose buyer engagement during the walkthrough?",
             type:"textarea",
             required:false,
-            placeholder:"Slides, sections, or moments that consistently stall the energy."
+            placeholder:"Moments where energy consistently drops."
           },
           {
-            name:"closing_techniques",
-            label:"How do reps pre-close or trial close today?",
+            name:"prc_trial_close",
+            label:"How do you pre-close or trial close or otherwise tie down deals?",
             type:"textarea",
             required:false,
-            placeholder:"Example: checking alignment, confirming next steps, asking for commitment..."
+            placeholder:"Specific questions or techniques you encourage."
           },
           {
-            name:"post_signature",
+            name:"prc_next_action",
             label:"What is the next action after receiving a signed deal or PO?",
             type:"textarea",
             required:false,
             placeholder:"Handoff, kickoff, implementation steps, etc."
           },
           {
-            name:"decision_makers",
-            label:"Who makes the final decision?",
+            name:"prc_decision_makers",
+            label:"Who makes the final decision? Is it the same contact from the beginning, or additional stakeholders?",
             type:"textarea",
             required:false,
-            placeholder:"Is it the same contact from the beginning or additional stakeholders?"
+            placeholder:"Detail the decision-making path."
           },
           {
-            name:"section4_notes",
-            label:"Notes or additional questions for Proposal Review to Close.",
+            name:"prc_notes",
+            label:"Proposal Review to Close – notes",
             type:"textarea",
             required:false,
-            placeholder:"Any specific deal we should mirror end-to-end."
+            placeholder:"Any other details for late-stage practice."
+          },
+          {
+            name:"prc_additional_questions",
+            label:"Proposal Review to Close – additional questions",
+            type:"textarea",
+            required:false,
+            placeholder:"Anything you want to dig into together."
           }
         ]
       },
+
+      /* 5. VISIBILITY OF KEY MOMENTS */
       {
         id:"visibility",
-        section:"5. Key Moment Visibility",
-        title:"Video highlight visibility",
-        subtitle:"Who should see recorded Key Moments inside Virtual Instinct?",
+        section:"5. Determine Visibility of Key Moments",
+        title:"Key Moment visibility preferences",
+        subtitle:"Clarify whether highlights are private, team-visible, or a mix.",
         fields:[
           {
-            name:"visibility_preferences",
-            label:"What is your preference regarding Key Moment visibility?",
+            name:"vis_preference",
+            label:"What is FirmaPak’s preference regarding Key Moment visibility?",
             type:"textarea",
             required:false,
-            placeholder:"Private to the salesperson, team-visible, mixed, leadership-only, etc."
+            placeholder:"Private to salesperson, public to team, or a mix depending on content."
           },
           {
-            name:"confidential_topics",
-            label:"Are there topics or practice moments that must remain confidential?",
+            name:"vis_confidential_topics",
+            label:"Are there topics or practice moments that should remain confidential?",
             type:"textarea",
             required:false,
-            placeholder:"Sensitive accounts, pricing structures, or strategic initiatives..."
+            placeholder:"Sensitive accounts, pricing structures, strategic topics, etc."
           },
           {
-            name:"leadership_access",
-            label:"Should leadership have access to all clips or selected clips?",
+            name:"vis_leadership_access",
+            label:"Will leadership want access to all clips or selected clips only?",
             type:"textarea",
             required:false,
-            placeholder:"Who can view what, and under which conditions?"
+            placeholder:"Who should see what, and under what conditions."
           },
           {
-            name:"section5_notes",
-            label:"Notes for Key Moment visibility.",
+            name:"vis_notes",
+            label:"Key Moment visibility – notes",
             type:"textarea",
             required:false,
             placeholder:"Any internal guidelines or compliance constraints."
           }
         ]
       },
+
+      /* 6. PRE-SCHEDULE VIRTUAL IMPROV PROGRAM */
       {
         id:"improv_schedule",
-        section:"6. Virtual Improv Program",
-        title:"Scheduling weekly improv sessions",
-        subtitle:"We’ll align sessions with your real-world operating rhythm.",
+        section:"6. Pre-Schedule Virtual Improv Program",
+        title:"Virtual improv scheduling",
+        subtitle:"Align weekly improv sessions with your team’s rhythm.",
         fields:[
           {
-            name:"improv_schedule",
+            name:"improv_best_times",
             label:"What days/times work best for the team?",
             type:"textarea",
             required:false,
-            placeholder:"Preferred time zones, days of the week, and length of sessions."
+            placeholder:"Preferred time zones, days of the week, and ideal session length."
           },
           {
-            name:"section6_notes",
-            label:"Notes for Virtual Improv scheduling.",
+            name:"improv_notes",
+            label:"Virtual Improv Program – notes",
             type:"textarea",
             required:false,
             placeholder:"Busy seasons, blackout dates, or travel-heavy periods."
           }
         ]
       },
+
+      /* 7. END-OF-PERIOD DEBRIEF */
       {
         id:"debrief",
-        section:"7. End-of-Period Debrief",
+        section:"7. End of Active Practice Period Debrief",
         title:"End-of-practice debrief",
-        subtitle:"Align on success metrics, attendees, and recap format.",
+        subtitle:"Proposed date: Monday, February 2. Align on outcomes, attendees, and recap format.",
         fields:[
           {
             name:"debrief_attendees",
@@ -1117,25 +1243,25 @@
             placeholder:"Sales leaders, enablement, reps, operations, etc."
           },
           {
-            name:"success_outcomes",
+            name:"debrief_outcomes",
             label:"What outcomes matter most to measure success?",
             type:"textarea",
             required:false,
-            placeholder:"Behavior change, pipeline movement, win rates, deal quality..."
+            placeholder:"Behavior change, pipeline movement, win rates, deal quality, etc."
           },
           {
-            name:"recap_format",
-            label:"Should we deliver a written recap, video recap, or both?",
+            name:"debrief_recap",
+            label:"Should a written or video recap be included?",
             type:"textarea",
             required:false,
             placeholder:"Preferred format and who it should be shared with."
           },
           {
-            name:"final_notes",
-            label:"Final notes or anything we didn’t ask that you want us to know.",
+            name:"debrief_notes",
+            label:"End-of-period debrief – notes",
             type:"textarea",
             required:false,
-            placeholder:"Use this space to capture anything else on your mind."
+            placeholder:"Anything else you’d like us to know as we close out the period."
           }
         ]
       }
@@ -1327,4 +1453,5 @@
   </script>
 </body>
 </html>
+
 
