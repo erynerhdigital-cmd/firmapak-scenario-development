@@ -54,78 +54,216 @@
       gap:20px;
     }
 
-    /* HEADER */
-    .app-header {
+    /* TOP BAR: LOGOS ONLY */
+    .top-bar {
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
     }
 
-    .brand-left {
+    .logo-row {
       display:flex;
       align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
+      gap:12px;
     }
 
-    .brand-lockup {
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .firmapak-logo {
+      height:32px;
+      width:auto;
     }
 
-    .brand-lockup span {
-      font-size:13px;
+    .vi-logo {
+      height:26px;
+      width:auto;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      border-radius:24px;
+      padding:28px 24px 26px;
+      background:radial-gradient(circle at top left,rgba(59,130,246,.28),transparent 55%),
+                  radial-gradient(circle at bottom right,rgba(56,189,248,.18),transparent 60%),
+                  linear-gradient(145deg,#020617,#020617 35%,#020617);
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-title {
+      font-family:"Montserrat",system-ui;
+      font-size:32px;
+      line-height:1.2;
+      margin-bottom:8px;
+      letter-spacing:.02em;
+    }
+
+    .hero-title span.highlight {
+      color:#4f8cff;
+    }
+
+    .hero-subtitle {
+      font-size:14px;
+      color:var(--vi-muted);
+      max-width:640px;
+      margin-bottom:24px;
+    }
+
+    .hero-tagline {
       text-transform:uppercase;
-      letter-spacing:.12em;
+      letter-spacing:.18em;
+      font-size:11px;
+      color:rgba(148,163,184,.9);
+      margin-bottom:12px;
+    }
+
+    .hero-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-bottom:20px;
+    }
+
+    @media (max-width:900px){
+      .hero-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
+    .hero-card {
+      border-radius:18px;
+      padding:14px 14px 16px;
+      background:rgba(15,23,42,.96);
+      border:1px solid rgba(51,65,85,.9);
+    }
+
+    .hero-card-title {
+      font-size:13px;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+
+    .hero-card-sub {
+      font-size:12px;
       color:var(--vi-muted);
     }
 
-    .brand-left h1 {
-      font-family:"Montserrat",system-ui;
-      font-size:15px;
-      font-weight:600;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:#cbd5f5;
-    }
-
-    .logo-badge {
+    .hero-icon {
+      width:24px;
+      height:24px;
+      border-radius:999px;
+      margin-bottom:8px;
       display:flex;
       align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(15,23,42,.7);
-      border:1px solid rgba(148,163,184,.35);
-      backdrop-filter:blur(10px);
+      justify-content:center;
+      background:rgba(37,99,235,.2);
+      font-size:14px;
     }
 
-    .logo-badge img {
-      height:22px;
-      width:auto;
-      display:block;
+    .hero-bottom {
+      display:grid;
+      grid-template-columns: minmax(0,2fr) minmax(0,1.4fr);
+      gap:16px;
+      align-items:flex-start;
+      margin-top:4px;
     }
 
-    .logo-divider {
-      width:1px;
-      height:18px;
-      background:rgba(148,163,184,.5);
+    @media (max-width:900px){
+      .hero-bottom {
+        grid-template-columns:1fr;
+      }
     }
 
-    .header-pill {
+    .expect-card {
+      border-radius:18px;
+      padding:14px 16px 12px;
+      background:rgba(15,23,42,.96);
+      border:1px solid rgba(51,65,85,.9);
+      font-size:12px;
+    }
+
+    .expect-title {
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:8px;
+    }
+
+    .expect-columns {
+      display:grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    @media (max-width:600px){
+      .expect-columns {
+        grid-template-columns:1fr;
+      }
+    }
+
+    .expect-section-title {
       font-size:11px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(56,189,248,.45);
-      background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(37,99,235,.18));
       text-transform:uppercase;
       letter-spacing:.16em;
-      color:#e0f2fe;
+      color:rgba(148,163,184,.9);
+      margin-bottom:6px;
     }
 
-    /* MAIN CONTENT LAYOUT */
+    .expect-list {
+      list-style:none;
+      padding-left:0;
+    }
+
+    .expect-list li {
+      display:flex;
+      align-items:flex-start;
+      gap:6px;
+      margin-bottom:4px;
+    }
+
+    .expect-list li span.bullet {
+      font-size:12px;
+      margin-top:1px;
+    }
+
+    .hero-cta-row {
+      margin-top:16px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:10px;
+    }
+
+    .btn {
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:500;
+      padding:9px 18px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+      transition:background .15s ease,transform .08s ease,box-shadow .15s ease,opacity .15s ease;
+      font-family:inherit;
+    }
+
+    .btn-primary {
+      background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue));
+      color:#0b1220;
+      box-shadow:0 10px 25px rgba(15,118,110,.6);
+    }
+
+    .btn-primary:hover {
+      transform:translateY(-1px);
+      box-shadow:0 14px 30px rgba(8,47,73,.8);
+    }
+
+    .hero-cta-hint {
+      font-size:11px;
+      color:var(--vi-muted);
+    }
+
+    /* CONSULTATION SECTION */
     .content-row {
       display:grid;
       grid-template-columns: minmax(0,1.2fr) minmax(0,2fr);
@@ -137,13 +275,8 @@
       .content-row {
         grid-template-columns:minmax(0,1fr);
       }
-      .app-header {
-        flex-direction:column;
-        align-items:flex-start;
-      }
     }
 
-    /* LEFT COLUMN – INTRO + META */
     .intro-panel {
       border-radius:var(--card-radius);
       padding:18px 18px 20px;
@@ -156,7 +289,7 @@
 
     .intro-panel h2 {
       font-family:"Montserrat",system-ui;
-      font-size:22px;
+      font-size:18px;
       letter-spacing:.03em;
       text-transform:uppercase;
       margin-bottom:10px;
@@ -232,7 +365,6 @@
       margin-bottom:4px;
     }
 
-    /* RIGHT COLUMN – CARD / WIZARD */
     .wizard-shell {
       position:relative;
       min-height:360px;
@@ -385,35 +517,6 @@
       gap:8px;
     }
 
-    button {
-      font-family:inherit;
-    }
-
-    .btn {
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      font-size:12px;
-      font-weight:500;
-      padding:8px 16px;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      white-space:nowrap;
-      transition:background .15s ease,transform .08s ease,box-shadow .15s ease,opacity .15s ease;
-    }
-
-    .btn-primary {
-      background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue));
-      color:#0b1220;
-      box-shadow:0 10px 25px rgba(15,118,110,.6);
-    }
-
-    .btn-primary:hover {
-      transform:translateY(-1px);
-      box-shadow:0 14px 30px rgba(8,47,73,.8);
-    }
-
     .btn-secondary {
       background:rgba(15,23,42,.95);
       color:var(--vi-text);
@@ -452,49 +555,109 @@
       color:#f97373;
       margin-left:2px;
     }
+
+    .hidden {
+      display:none;
+    }
   </style>
 </head>
 <body>
   <div class="page-shell">
     <div class="layout">
-      <!-- HEADER -->
-      <header class="app-header">
-        <div class="brand-left">
-          <div class="brand-lockup">
-            <div class="logo-badge">
-              <img src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Virtual%20Instinct-03.webp" alt="Virtual Instinct Logo">
-              <span>Virtual Instinct</span>
-              <span class="logo-divider"></span>
-              <img src="https://cdn.prod.website-files.com/657b217c50907fb964668cfd/65b13dc6c189f95a874f8ef9_Firmapak_logo.svg" alt="FirmaPak Logo">
+      <!-- TOP LOGO BAR -->
+      <div class="top-bar">
+        <div class="logo-row">
+          <img class="firmapak-logo" src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Firmapak%20-%20White%20Logo.webp" alt="FirmaPak Logo">
+        </div>
+        <img class="vi-logo" src="https://23746819.fs1.hubspotusercontent-na1.net/hubfs/23746819/Virtual%20Instinct-03.webp" alt="Virtual Instinct Logo">
+      </div>
+
+      <!-- HERO LANDING PAGE -->
+      <section class="hero">
+        <div class="hero-tagline">Consultation to Develop</div>
+        <h1 class="hero-title">
+          Virtual Practice <span class="highlight">Scenarios</span>
+        </h1>
+        <p class="hero-subtitle">
+          Complete this consultation form to help us build customized sales training scenarios tailored to FirmaPak’s unique challenges and opportunities.
+        </p>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-icon">📋</div>
+            <div class="hero-card-title">Qualifying &amp; Needs Analysis</div>
+            <div class="hero-card-sub">
+              Master early-stage conversations and uncover customer needs effectively.
             </div>
           </div>
-          <h1>Scenario Development Consultation</h1>
+          <div class="hero-card">
+            <div class="hero-icon">📑</div>
+            <div class="hero-card-title">Proposal Review to Close</div>
+            <div class="hero-card-sub">
+              Navigate negotiations and close deals with confidence.
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">⚡</div>
+            <div class="hero-card-title">The Medley (Full-Flow)</div>
+            <div class="hero-card-sub">
+              Practice complete sales cycles from start to finish.
+            </div>
+          </div>
         </div>
 
-        <div class="header-pill">
-          Sales Practice • Qualifying • Proposal Review
+        <div class="hero-bottom">
+          <div class="expect-card">
+            <div class="expect-title">What to Expect</div>
+            <div class="expect-columns">
+              <div>
+                <div class="expect-section-title">This form covers</div>
+                <ul class="expect-list">
+                  <li><span class="bullet">✅</span><span>Customer profile &amp; ideal customer analysis</span></li>
+                  <li><span class="bullet">✅</span><span>Customer personas &amp; buying dynamics</span></li>
+                  <li><span class="bullet">✅</span><span>Qualifying &amp; needs analysis scenarios</span></li>
+                  <li><span class="bullet">✅</span><span>Proposal review &amp; closing scenarios</span></li>
+                </ul>
+              </div>
+              <div>
+                <div class="expect-section-title">Time &amp; progress</div>
+                <ul class="expect-list">
+                  <li><span class="bullet">⏱</span><span>Estimated time: 20–30 minutes</span></li>
+                  <li><span class="bullet">📂</span><span>8 sections to complete</span></li>
+                  <li><span class="bullet">📈</span><span>Progress saved on each step</span></li>
+                  <li><span class="bullet">✉️</span><span>Responses emailed to the Virtual Instinct team</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </header>
 
-      <!-- MAIN ROW -->
-      <div class="content-row">
+        <div class="hero-cta-row">
+          <button id="start-btn" class="btn btn-primary">Start Consultation</button>
+          <span class="hero-cta-hint">You can complete this in one sitting or come back later.</span>
+        </div>
+      </section>
+
+      <!-- CONSULTATION SECTION (HIDDEN UNTIL START) -->
+      <div id="consultation-section" class="content-row hidden">
         <!-- LEFT: INTRO -->
         <aside class="intro-panel">
-          <h2>FirmaPak – Virtual Practice Build</h2>
+          <h2>Scenario Design Intake</h2>
           <p class="intro-subtitle">
-            Help us design realistic, high-pressure sales practice scenarios for your team.
+            Use this intake to capture how your customers think, how deals are won or lost,
+            and the exact moments your sales team needs to rehearse.
           </p>
 
           <div class="scenario-chips">
             <span class="chip">Qualifying &amp; Needs Analysis</span>
             <span class="chip">Proposal Review to Close</span>
-            <span class="chip">The Medley (Full Flow)</span>
+            <span class="chip">Full-Flow Medley</span>
           </div>
 
           <p class="intro-note">
-            This consultation intake captures how your customers think, how deals are won or lost,
-            and the exact moments your sales team needs to rehearse.
-            Your responses will be used to script live practice scenarios inside Virtual Instinct.
+            Your responses will be translated into live practice scenarios and Key Moments inside
+            Virtual Instinct. We’ll combine your lost deals, competitive dynamics, and internal
+            sales patterns to build realistic simulations.
           </p>
 
           <div class="meta-box">
@@ -504,7 +667,7 @@
             </div>
             <div class="meta-row">
               <span class="meta-label">What Happens Next</span>
-              <span class="meta-value">We translate this into role-play scripts &amp; key moments.</span>
+              <span class="meta-value">We write scripts, build role-play flows &amp; schedule sessions.</span>
             </div>
             <ul class="meta-checklist">
               <li>✔ On submit, answers are sent to a secure webhook.</li>
@@ -551,17 +714,15 @@
 
     /********************************************************
      * STEP DEFINITIONS
+     * (Name / company / email removed – only participants)
      ********************************************************/
     const steps = [
       {
         id: "intro_contact",
         section: "Pre-Consultation",
-        title: "Who’s completing this intake?",
-        subtitle: "Start with the core details so we can associate scenarios with the right team and stakeholders.",
+        title: "Who will be practicing?",
+        subtitle: "List the salespeople who will participate so we can align scenarios with your team.",
         fields: [
-          { name: "company_name", label: "Company name", type: "text", required: true, placeholder: "FirmaPak" },
-          { name: "contact_name", label: "Your name", type: "text", required: true, placeholder: "First and last name" },
-          { name: "contact_email", label: "Your email", type: "email", required: true, placeholder: "name@firmapak.com" },
           {
             name: "participants",
             label: "Names & emails of all participating salespeople",
@@ -1033,7 +1194,7 @@
     ];
 
     /********************************************************
-     * STATE & RENDERING
+     * STATE & DOM REFS
      ********************************************************/
     let currentStepIndex = 0;
     const answers = {};
@@ -1045,7 +1206,12 @@
     const backBtn = document.getElementById("back-btn");
     const nextBtn = document.getElementById("next-btn");
     const statusEl = document.getElementById("status");
+    const consultationSection = document.getElementById("consultation-section");
+    const startBtn = document.getElementById("start-btn");
 
+    /********************************************************
+     * RENDERING
+     ********************************************************/
     function renderStep() {
       const step = steps[currentStepIndex];
       const total = steps.length;
@@ -1187,6 +1353,9 @@
       }
     }
 
+    /********************************************************
+     * EVENTS
+     ********************************************************/
     backBtn.addEventListener("click", () => {
       if (currentStepIndex === 0) return;
       if (!collectCurrentStepValues()) return;
@@ -1205,7 +1374,13 @@
       }
     });
 
-    renderStep();
+    // Show consultation section when Start button is clicked
+    startBtn.addEventListener("click", () => {
+      consultationSection.classList.remove("hidden");
+      startBtn.disabled = true;
+      startBtn.textContent = "Consultation Started";
+      renderStep();
+    });
   </script>
 </body>
 </html>
