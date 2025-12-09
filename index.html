@@ -293,50 +293,10 @@
       color:var(--vi-muted);
     }
 
-    .hero-cta-row {
-      margin-top:16px;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:10px;
-    }
-
     .hero-cta-hint {
       font-size:11px;
       color:var(--vi-muted);
-    }
-
-    .btn {
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      font-size:13px;
-      font-weight:500;
-      padding:9px 18px;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      white-space:nowrap;
-      transition:background .15s ease,transform .08s ease,box-shadow .15s ease,opacity .15s ease;
-      font-family:inherit;
-    }
-
-    .btn-primary {
-      background:linear-gradient(135deg,var(--vi-teal),var(--vi-blue));
-      color:#0b1220;
-      box-shadow:0 10px 25px rgba(15,118,110,.6);
-    }
-
-    .btn-primary:hover {
-      transform:translateY(-1px);
-      box-shadow:0 14px 30px rgba(8,47,73,.8);
-    }
-
-    .btn:disabled {
-      opacity:.45;
-      cursor:default;
-      transform:none;
-      box-shadow:none;
+      margin-top:14px;
     }
 
     /* FORM SECTION (HUBSPOT) */
@@ -586,12 +546,11 @@
                 <li>✔ The Virtual Instinct team is notified automatically.</li>
               </ul>
             </div>
-          </div>
-        </div>
 
-        <div class="hero-cta-row">
-          <button id="start-btn" class="btn btn-primary">Start Consultation</button>
-          <span class="hero-cta-hint">Scrolls to the intake form below.</span>
+            <p class="hero-cta-hint">
+              Below is the Scenario Design Consultation form for the FirmaPak team.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -618,19 +577,6 @@
 
     </div>
   </div>
-
-  <script>
-    // Smooth scroll from hero button to form card
-    const startBtn = document.getElementById("start-btn");
-    const formSection = document.getElementById("form-section");
-
-    if (startBtn && formSection) {
-      startBtn.addEventListener("click", () => {
-        formSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    }
-  </script>
 </body>
 </html>
-
 
